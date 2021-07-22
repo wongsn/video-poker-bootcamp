@@ -1,0 +1,71 @@
+* {
+  background-color: greenyellow;
+}
+
+img {
+  box-sizing: border-box;
+  width: var(--width);
+  height: var(--height);
+  transform: translateX(1000);
+}
+
+header {
+  text-align: center;
+}
+
+.playingfield {
+  display: block;
+  box-sizing: border-box;
+  background-color: green;
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+  width: 80vw;
+  height: 50vh;
+}
+
+.cards {
+  position: relative;
+  top: 35%;
+  box-sizing: border-box;
+  display: inline-block;
+  border-style: dashed;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.2);
+  --width: 100px;
+  --height: calc(var(--width) / 2.5 * 3.5);
+  width: var(--width);
+  height: var(--height);
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.cards:hover {
+  background-color: yellow;
+}
+
+.cards:active {
+  background-color: red;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #008cba;
+}
+
+#card1:hover .overlay {
+  opacity: 1;
+}
+
+.button {
+  border-radius: 7px;
+  background-color: darkgreen;
+  color: white;
+}
