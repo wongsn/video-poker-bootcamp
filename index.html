@@ -6,29 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/9589b33f77.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="global.js"></script>
     <script src="testHands.js"></script>
   </head>
   <body>
-    <header>Video Poker</header>
+    <div class="intro">
+      <h1 class="intro-header">
+        <span class="logo-header">Video</span
+        ><span class="logo-header">Poker</span>
+      </h1>
+    </div>
 
     <div class="main">
-      <div class="playingfield">
-        <div class="cards" id="card1">
-          <img src="cards/back.png" class="image" />
-          <div class="overlay">Hello</div>
-        </div>
-        <div class="cards" id="card2"><img src="cards/back.png" /></div>
-        <div class="cards" id="card3"><img src="cards/back.png" /></div>
-        <div class="cards" id="card4"><img src="cards/back.png" /></div>
-        <div class="cards" id="card5"><img src="cards/back.png" /></div>
-      </div>
+      <div class="playingfield" id="playingfield"></div>
     </div>
 
     <div class="controls">
-      <button class="button">Deal</button>
-      <button class="button">Bet</button>
-      <button class="button">Reset</button>
+      <i class="fas fa-gamepad"></i>
+      <button class="button" id="betup">
+        <i class="far fa-arrow-alt-circle-up"></i>
+      </button>
+      <button class="button" id="betdown">
+        <i class="far fa-arrow-alt-circle-down"></i>
+      </button>
+      <button class="button" id="deal"><i class="fas fa-donate"></i></button>
+      <button class="button" id="swap" disabled>
+        <i class="fas fa-exchange-alt"></i>
+      </button>
     </div>
+    <div class="datafield" id="datafield"></div>
   </body>
 </html>
