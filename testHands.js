@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const multiplier = {
   royalFlush: 250,
   straightFlush: 50,
@@ -125,3 +126,4 @@ const calcHandScore = (hand) => {
 const highlightWinners = () => {
 
 };
+=======
