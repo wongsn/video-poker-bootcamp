@@ -1,5 +1,8 @@
 * {
   background-color: green;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .intro {
@@ -14,6 +17,7 @@
 }
 
 .intro-header {
+  background-color: transparent;
   position: absolute;
   top: 40%;
   left: 50%;
@@ -22,19 +26,20 @@
 }
 
 .logo-header {
+  background-color: transparent;
   position: relative;
   display: inline-block;
   bottom: -20px;
   opacity: 0;
 }
 
-.logo-header:active {
-  bottom: 0px;
+.logo-header.active {
+  bottom: 0;
   opacity: 1;
   transition: ease-in-out 0.5s;
 }
 
-.logo-header:fade {
+.logo-header.fade {
   bottom: 150px;
   opacity: 0;
   transition: ease-in-out 0.5s;

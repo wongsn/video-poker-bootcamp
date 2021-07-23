@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-// Create an empty helper function called calcHandScore that returns a fixed number of points for now, e.g. 1.
-
-// Use JSDoc function commenting with the following attributes.
-// Description of function
-// Description of each parameter
-// Description of return value
-=======
-
-// Create an empty helper function called calcHandScore that returns a fixed number of points for now, e.g. 1.
-
-  // Use JSDoc function commenting with the following attributes.
-  // Description of function
-  // Description of each parameter
-  // Description of return value
->>>>>>> 7d25d2890ffb8695a57de656c793baa20370ca5b
-// calcHandScore will take an array of card objects and return the number of points that the user scored for the cards in their hand.
-// Abstracting calcHandScore allows us to construct the primary game logic without worrying about hand-scoring logic.
-// It will also make testing hand-scoring logic easier because we can test scoring of individual hands without running the whole game.
-
-// Code the primary game logic using calcHandScore wherever we wish to calculate the score of a given hand. This logic should include the following.
-<<<<<<< HEAD
-// The user has a global number of points.
-// The user clicks a button to deal cards.
-// The user selects which cards they want to keep.
-// The game replaces the unselected cards, calculates the hand score, and updates total points.
-// Lay out game controls for mobile (portrait orientation), and set the max-width CSS property of the container so the layout is still friendly on a wider screen.
-
 // init deck and playerhand as an empty array
 let deck = [];
 let playerHand = [];
@@ -204,10 +176,33 @@ const endTurn = () => {
 };
 
 // async loading to ensure html is parsed before DOM selection occurs
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
+  const logoheader = document.querySelectorAll('.logo-header');
+  const intro = document.querySelector('.intro');
+  setTimeout(() => {
+    logoheader.forEach((span, index) => {
+      setTimeout(() => {
+        span.classList.add('active');
+      }, (index + 1) * 400);
+    });
+
+    setTimeout(() => {
+      logoheader.forEach((span, index) => {
+        setTimeout(() => {
+          span.classList.remove('active');
+          span.classList.add('fade');
+        }, (index + 1) * 50);
+      });
+    }, 1400);
+
+    setTimeout(() => {
+      intro.style.top = '-100vh';
+    }, 1800);
+  });
+
   const playingfield = document.getElementById('playingfield');
   const datafield = document.getElementById('datafield');
-  datafield.innerHTML = `The current pot is ${pot}. The bet amount is ${bet}.`;
+  datafield.innerHTML = 'Use the arrows to increase bet amount, then submit the bet.';
 
   betUp = document.getElementById('betup');
   betUp.addEventListener('click', () => { changeBet('up'); });
