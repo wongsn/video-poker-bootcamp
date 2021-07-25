@@ -154,7 +154,8 @@ const calcHandScore = (hand) => {
   // helper function to help sort the cards
   const comparison = (a, b) => a.rank - b.rank;
   // Sorts the playerHand by order of rank for calculation
-  const sortedHand = hand.sort(comparison);
+  const sortedHand = hand.map((x) => x);
+  sortedHand.sort(comparison);
 
   tallyHandSuit(sortedHand, cardSuitTally);
   tallyHandValue(sortedHand, cardValueTally);

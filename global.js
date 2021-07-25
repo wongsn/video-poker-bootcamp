@@ -1,3 +1,23 @@
+const setCookie = (cname, cvalue) => {
+  document.cookie = `${cname}=${cvalue};SameSite=None; Secure;`;
+};
+
+const getCookie = (cname, hname) => {
+  const name = `${cname}=`;
+  const score = `${hname}=`;
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const ca = decodedCookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return '';
+};
 // init deck and playerhand as an empty array
 let deck = [];
 let preserveDeck = [];
@@ -5,6 +25,7 @@ let playerHand = [];
 let numberOfHands = 1;
 
 // init helper arrays and objects
+// cardsToBeSwapped is an array of indexes of cards that were selected
 let cardsToBeSwapped = [];
 
 let pot = 1000;
@@ -88,7 +109,7 @@ const drawCards = (array, hand, turn) => {
     endTurn();
   } else {
     for (let i = 0; i < array.length; i += 1) {
-      console.log(array, array[i], hand[array[i]]);
+      console.log(array, array[i], hand, hand[array[i]]);
       const selectedCardContainer = document.getElementById(`c${hand[array[i]].rank}`);
       if (selectedCardContainer.classList.contains('again')) {
         selectedCardContainer.classList.remove('slide-in-blurred-top');
@@ -127,6 +148,7 @@ const handIterator = async (num) => {
   }
 };
 
+// takes the card object and the index within the hand
 const createCard = (object, index) => {
   const suit = document.createElement('div');
   suit.classList.add('suit-front', object.color);
@@ -151,13 +173,14 @@ const createCard = (object, index) => {
 };
 
 // main creation function to visually display the cards from hand
+
 const createCardsFromArray = (hand) => {
   for (let j = 0; j < hand.length; j += 1) {
     const cardsContainer = document.createElement('div');
     cardsContainer.classList.add('cardsContainer', 'slide-in-blurred-top');
     cardsContainer.id = `cc${j}`;
     cardsContainer.appendChild(createCard(hand[j], j));
-    setTimeout(() => { playingfield.appendChild(cardsContainer); }, getRandomIndex(100));
+    playingfield.appendChild(cardsContainer);
   }
 };
 
@@ -268,10 +291,16 @@ window.addEventListener('load', () => {
 
   const toggleAudio = document.getElementById('audiobtn');
   toggleAudio.addEventListener('click', () => {
+    const bgaudio = document.querySelector('#bgaudio');
+    bgaudio.preload = 'auto';
+    bgaudio.loop = true;
     if (toggleAudio.classList.contains('fa-volume-up')) {
+      // audio
+      bgaudio.play();
       toggleAudio.classList.remove('fa-volume-up');
       toggleAudio.classList.add('fa-volume-mute');
     } else {
+      bgaudio.pause();
       toggleAudio.classList.remove('fa-volume-mute');
       toggleAudio.classList.add('fa-volume-up');
     }
@@ -313,6 +342,8 @@ window.addEventListener('load', () => {
     playername = document.getElementById('name').value;
     const displayname = document.getElementById('player');
     displayname.innerHTML = playername;
+    setCookie('player', playername);
+    setCookie('highscore', highest);
     highscore.innerHTML = `${playername} <p>High-Score: ${highest}</p>`;
   });
 
