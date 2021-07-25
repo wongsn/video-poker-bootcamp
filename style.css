@@ -1,15 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&family=Righteous&family=Staatliches&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  font-family: "Carter One", cursive;
+  /* font-family: "Righteous", cursive;
+  font-family: "Staatliches", cursive; */
   /* overflow-y: hidden; */
 }
 
 body {
   min-width: 100vh;
-  background: linear-gradient(#2b1055, #7597de);
+  background: linear-gradient(#140230, #2b1055);
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 header {
@@ -92,53 +98,112 @@ section img#moon {
   mix-blend-mode: screen;
 }
 
-section img#moutains-front {
+section img#mountains_front {
   z-index: 9;
 }
 
-.btn {
+.btn,
+.input {
+  cursor: pointer;
   text-decoration: none;
   display: inline-block;
   padding: 8px;
   border-radius: 40px;
   background: white;
   color: #2b1055;
-  font-size: 1.5rem;
-  z-index: 5;
+  font-size: 1rem;
+  font-weight: 200;
+  z-index: 7;
 }
 
-#btn {
-  transform: translateY(100px);
+.btn-float {
+  position: fixed;
+  z-index: 9;
+  bottom: 15px;
+  left: calc(100% - 75px);
+  width: 60px;
+  height: 60px;
+  padding: 22px 17px;
+  transition: all 0.5s ease-in-out;
+  visibility: visible;
+  background-color: #ef4b6c;
+  border-radius: 50%;
+  transform: translateZ(0);
 }
 
-#text {
+.btn:hover {
+  background: #2b1055;
+  color: white;
+}
+
+.input {
+  z-index: 46;
+}
+
+#btn,
+.input {
+  transform: translateY(7.5rem);
+}
+
+#title {
   position: absolute;
   color: white;
   white-space: nowrap;
-  font-size: 7.5vw;
-  z-index: 10;
+  line-height: 5.3rem;
+  font-size: 6.5rem;
+  z-index: 45;
 }
 
-.about,
+.how {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.instructions {
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2px;
+}
+
 .how,
 .main {
   position: relative;
+  margin: 0 auto;
   padding: 100px;
   background: #1c0522;
-  height: 100vh;
+  height: 90vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.about h2,
+.main {
+  border-radius: 100% / 0 0 20% 20%;
+}
+
 .how h2 {
   font-size: 3.5rem;
   margin-bottom: 10px;
   color: white;
 }
 
-.about p,
-.how p {
+.how h3 {
   font-size: 1.2rem;
+  line-height: 0.8rem;
   color: white;
+}
+
+.best {
+  font-weight: 200;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.fa-mobile-alt {
+  transform: rotate(90deg);
 }
 
 .intro {
@@ -163,6 +228,7 @@ section img#moutains-front {
 
 .logo-header {
   background-color: transparent;
+  color: white;
   position: relative;
   display: inline-block;
   bottom: -20px;
@@ -189,15 +255,35 @@ img {
 }
 
 .controls {
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
   font-size: 2rem;
+  height: 10vh;
+  width: 50vw;
   background-color: #1c0522;
   color: white;
 }
 
+#bet,
+#numhands {
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  width: 20vw;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+}
+
 button {
+  position: relative;
   text-align: center;
   border: none;
+
   background-color: transparent;
   font-size: 2rem;
   color: white;
@@ -219,8 +305,8 @@ button:disabled {
 
 button:disabled:hover {
   color: rgba(255, 255, 255, 0.2);
-  opacity: 0.2;
-  cursor: none;
+  opacity: 1;
+  cursor: auto;
 }
 
 .far,
@@ -229,10 +315,25 @@ button:disabled:hover {
 }
 
 .datafield {
-  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   font-size: 1rem;
-  background: #1c0522;
+  background: transparent;
+  height: 10vh;
   color: white;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#datamain {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+#pot {
+  min-width: 20%;
 }
 
 .playingfield {
@@ -244,7 +345,7 @@ button:disabled:hover {
   justify-content: center;
   text-align: center;
   width: 100%;
-  height: 70vh;
+  height: 60vh;
 }
 
 .cardsContainer {
@@ -268,9 +369,7 @@ button:disabled:hover {
 .cards {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: white;
-  font-size: var(--height);
   position: relative;
-  text-align: center;
   margin: 0 auto;
   box-sizing: border-box;
   border-radius: 4px;
@@ -290,8 +389,12 @@ button:disabled:hover {
 
 .suit-front,
 .suit-back {
+  cursor: pointer;
   position: absolute;
-  margin: 4px 0px 0px 3px;
+  margin-left: 0.5rem;
+  margin-bottom: 0.2rem;
+  text-align: center;
+  font-size: var(--height);
   backface-visibility: hidden;
 }
 
@@ -313,67 +416,47 @@ button:disabled:hover {
   color: red;
 }
 
-.cards.winning {
-  box-shadow: 1px 1px 10px 3px gold;
+.cards:hover {
+  box-shadow: 1px 1px 10px 3px rgb(212, 12, 212);
 }
 
-/* ----------------------------------------------
- * Generated by Animista on 2021-7-23 19:3:11
- * Licensed under FreeBSD License.
- * See http://animista.net/license for more info. 
- * w: http://animista.net, t: @cssanimista
- * ---------------------------------------------- */
-
-.slide-in-blurred-top {
-  -webkit-animation: slide-in-blurred-top 0.6s cubic-bezier(0.23, 1, 0.32, 1)
-    both;
-  animation: slide-in-blurred-top 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  font-size: 0.75rem;
+  font-weight: 200;
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  margin-left: -80px;
 }
 
-@-webkit-keyframes slide-in-blurred-top {
-  0% {
-    -webkit-transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
-    transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
-    -webkit-transform-origin: 50% 0%;
-    transform-origin: 50% 0%;
-    -webkit-filter: blur(40px);
-    filter: blur(40px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
-    transform: translateY(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-@keyframes slide-in-blurred-top {
-  0% {
-    -webkit-transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
-    transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
-    -webkit-transform-origin: 50% 0%;
-    transform-origin: 50% 0%;
-    -webkit-filter: blur(40px);
-    filter: blur(40px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
-    transform: translateY(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
-.slide-out-blurred-top {
-  -webkit-animation: slide-in-blurred-top 0.6s cubic-bezier(0.23, 1, 0.32, 1)
-    reverse both;
-  animation: slide-in-blurred-top 0.6s cubic-bezier(0.23, 1, 0.32, 1) reverse
-    both;
+.button:disabled:hover .tooltiptext {
+  visibility: hidden;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%; /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+}
+
+#audiobtn {
+  cursor: pointer;
 }

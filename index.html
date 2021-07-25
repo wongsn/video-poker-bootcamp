@@ -6,70 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animation.css" />
+    <link rel="stylesheet" href="odometer.css" />
     <script
       src="https://kit.fontawesome.com/9589b33f77.js"
       crossorigin="anonymous"
     ></script>
     <script src="global.js"></script>
     <script src="testHands.js"></script>
+    <script src="morecomfy.js" defer></script>
+    <script src="odometer.js"></script>
   </head>
   <body>
     <div class="intro">
       <h1 class="intro-header">
-        <span class="logo-header">Game</span>
-        <span class="logo-header">Loaded</span>
+        <span class="logo-header"> Game... </span>
+        <span class="logo-header" style="color: blueviolet">Loaded! </span>
+        <p class="best">
+          Best viewed on desktop (<i class="fas fa-desktop"> </i>) or on
+          landscape mobile ( <i class="fas fa-mobile-alt"></i>)
+        </p>
       </h1>
     </div>
 
     <header>
-      <a href="" class="logo"><i class="fas fa-dice-d20"></i></a>
+      <a href="#home" class="logo"><i class="fas fa-dice-d20"></i></a>
       <ul>
-        <li><a href="#about" class="active">About</a></li>
-        <li><a href="#how">How to play</a></li>
+        <li>
+          <a href="#about" class="tooltip"
+            >About<span class="tooltiptext"
+              >This project is part of Rocket Academy's Bootcamp.</span
+            ></a
+          >
+        </li>
+        <li><a href="#how">Gameplay</a></li>
+        <li>
+          <a><i class="fas fa-volume-up" id="audiobtn"></i></a>
+        </li>
       </ul>
     </header>
 
-    <section>
+    <section id="home">
       <img src="stars.png" alt="" id="stars" />
       <img src="moon.png" alt="" id="moon" />
       <img src="mountains_behind.png" alt="" id="mountains_behind" />
-      <h2 id="text">Video Poker</h2>
-      <a href="#main" class="btn" id="btn"><i class="fas fa-gamepad"></i> </a>
+      <h2 id="title">Video<br />Poker</h2>
       <img src="mountains_front.png" alt="" id="mountains_front" />
+      <input type="text" class="input" placeholder="input your name" id="name" name="name" required
+       minlength="4" maxlength="10" size="20"></input>
+      <a href="#how" class="btn" id="btn">How to play</a>
     </section>
-    <div class="about" id="about">
-      <h2>About this project.</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, et
-        ea hic dolorum earum qui. Eos ullam tempore provident maiores rerum quam
-        ipsum aperiam sed et vel eligendi omnis, nobis nisi quas obcaecati
-        numquam ab, ipsam harum modi? Nobis, animi vero facilis eveniet ex
-        reiciendis. Blanditiis ratione id facere ullam voluptates reiciendis
-        alias dolores quisquam dolorum praesentium quos tenetur, aliquam neque
-        non esse beatae rerum aliquid placeat quasi nobis explicabo autem et.
-        Est consequuntur fugit, culpa facilis inventore debitis dicta nulla
-        ducimus laudantium fuga quam neque ea accusamus illo tempore praesentium
-        animi tempora ipsam impedit nihil amet voluptatum ratione. Molestias!
-      </p>
-      <p>
-        <a href="#main" class="btn"><i class="fas fa-gamepad"></i> </a>
-      </p>
-    </div>
+
     <div class="how" id="how">
-      <h2>How to play.</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, et
-        ea hic dolorum earum qui. Eos ullam tempore provident maiores rerum quam
-        ipsum aperiam sed et vel eligendi omnis, nobis nisi quas obcaecati
-        numquam ab, ipsam harum modi? Nobis, animi vero facilis eveniet ex
-        reiciendis. Blanditiis ratione id facere ullam voluptates reiciendis
-        alias dolores quisquam dolorum praesentium quos tenetur, aliquam neque
-        non esse beatae rerum aliquid placeat quasi nobis explicabo autem et.
-        Est consequuntur fugit, culpa facilis inventore debitis dicta nulla
-        ducimus laudantium fuga quam neque ea accusamus illo tempore praesentium
-        animi tempora ipsam impedit nihil amet voluptatum ratione. Molestias!
-      </p>
-      <p>
+      <h2>Welcome <span id="player" style = "color: orange; text-decoration:underline;"></span></h2>
+      <p><h3>Here's how to play:</h3></p>
+      <br>
+      <div class="instructions">
+        <div id="instruct1">This is instruction 1</div>
+        <div id="instruct2">This is instruction 2</div>
+        <div id="instruct3">This is instruction 3</div>
+      </div>
+
+      <p style="text-align: center">
         <a href="#main" class="btn"><i class="fas fa-gamepad"></i> </a>
       </p>
     </div>
@@ -78,37 +76,63 @@
       <div class="playingfield" id="playingfield"></div>
 
       <div class="controls">
-        <button class="button" id="betup">
-          <i class="far fa-arrow-alt-circle-up"></i>
+        <div id="bet">
+          <button class="button tooltip" id="betup">
+            <i class="far fa-arrow-alt-circle-up"
+              ><span class="tooltiptext"
+                >Increase <br />
+                bet</span
+              ></i
+            >
+          </button>
+          <span id="betamt"> Bet </span>
+          <button class="button tooltip" id="betdown">
+            <i class="far fa-arrow-alt-circle-down"
+              ><span class="tooltiptext"
+                >Decrease <br />
+                bet</span
+              ></i
+            >
+          </button>
+        </div>
+        <div id="numhands">
+          <button class="button tooltip" id="plusonehand">
+            <i class="fas fa-plus"><span class="tooltiptext">+1 hand</span></i>
+          </button>
+          <span id="handamt">Hand</span>
+          <button class="button tooltip" id="plustenhand">
+            <i class="fas fa-plus"><span class="tooltiptext">+10 hand</span></i>
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <button class="button tooltip" id="deal">
+          <i class="fas fa-donate"><span class="tooltiptext"> Deal!</span></i>
         </button>
-        <button class="button" id="betdown">
-          <i class="far fa-arrow-alt-circle-down"></i>
-        </button>
-        <button class="button" id="deal"><i class="fas fa-donate"></i></button>
-        <button class="button" id="swap" disabled>
-          <i class="fas fa-exchange-alt"></i>
+        <button class="button tooltip" id="swap" disabled>
+          <i class="fas fa-exchange-alt"
+            ><span class="tooltiptext"> Swap cards <br />or stay!</span></i
+          >
         </button>
       </div>
-      <div class="datafield" id="datafield"></div>
+    </div>
+    <div class="datafield" id="datafield">
+      <div class="pot">
+        <i class="fas fa-coins"></i>
+        <div class="odometer" id="odometer">0</div>
+      </div>
+
+      <div class="border"></div>
+      <div id="datamain">
+        <div id="data"></div>
+        <div id="handconfig"></div>
+      </div>
+      <div class="border"></div>
+      <div id="highscore"></div>
     </div>
     <script>
-      let stars = document.getElementById("stars");
-      let moon = document.getElementById("moon");
-      let mountains_front = document.getElementById("mountains_front");
-      let mountains_behind = document.getElementById("mountains_behind");
-      let text = document.getElementById("text");
-      let btn = document.getElementById("btn");
-
-      window.addEventListener("scroll", () => {
-        let value = window.scrollY;
-        stars.style.left = value * 0.25 + "px";
-        moon.style.top = value * 1.05 + "px";
-        mountains_front.style.top = value * 0 + "px";
-        mountains_behind.style.top = value * 0.5 + "px";
-        text.style.marginRight = value * 4 + "px";
-        text.style.margintop = value * 1.5 + "px";
-        btn.style.marginTop = value * 1.5 + "px";
-      });
+      
+    
+      
     </script>
   </body>
 </html>
