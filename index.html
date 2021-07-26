@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +28,7 @@
     <script src="morecomfy.js" defer></script>
 
   </head>
-  <body>
+  <body id="body">
     <!-- Audio -->
     <!-- 1. Background Music -->
     <audio src="gameaudio/night_theme_1.mp3" id="bgaudio"></audio>
@@ -40,13 +41,15 @@
     <!-- 5. Overturn Cards -->
     <audio src="gameaudio/flipcard.mp3" id="flip"></audio>
     <!-- 6. Money in the pot -->
-    <audio src="gameaudio/insertpokertoken.mp3" id="token"></audio>
+    <audio src="gameaudio/inserttoken2.mp3" id="token"></audio>
     <!-- 7. Error -->
     <audio src="gameaudio/error.mp3" id="error"></audio>
     <!-- 8. Winning Hand -->
     <audio src="gameaudio/winninghand.mp3" id="winninghand"></audio>
     <!-- 9. Losing Hand -->
     <audio src="gameaudio/losinghand.mp3" id="losinghand"></audio>
+        <!-- 10. Add hand -->
+    <audio src="gameaudio/inserthand.mp3" id="hand"></audio>
 
     <!-- Splash Screen -->
     <div class="intro">
@@ -61,22 +64,25 @@
     </div>
 
     <!-- Navigation Bar -->
-    <header>
+    <header id="header">
       <a href="#home" class="logo"><i class="fas fa-dice-d20"></i></a>
       <ul>
         <li>
           <a href="#about" class="tooltip"
             ><i class="fas fa-info-circle"></i><span class="tooltiptext"
-              >This project is part of Rocket Academy's Bootcamp.</span
+              >This project is part of Rocket Academy's Bootcamp, done by Shen Nan.</span
             ></a
           >
         </li>
 
         <li>
-          <a><i class="fas fa-volume-up tooltip" id="audiobtn"><span class="tooltiptext">Toggle audio</span></i></a>
+          <a><i class="fas fa-volume-up tooltip" id="audiobtn"><span class="tooltiptext">Toggle background audio</span></i></a>
         </li>
         <li>
-          <a><i class="fas fa-trophy tooltip"><span class="tooltiptext">Leaderboard</span></i></a>
+          <a><i class="far fa-stop-circle tooltip" id="gameaudio"><span class = "tooltiptext">Toggle game sounds</span></i></a>
+        </li>
+        <li>
+          <a src="#" onclick="toggleLeaderBoard()" id="trophy"><i class="fas fa-trophy tooltip"><span class="tooltiptext">Leaderboard</span></i></a>
         </li>
         <li><a><i class="fas fa-table tooltip"><span class="tooltiptext"
               >Scoring Chart</span
@@ -95,6 +101,8 @@
        minlength="4" maxlength="10" size="20"></input>
       <a href="#how" class="btn" id="btn">How to play</a>
     </section>
+
+    <div class="leaderboard" id="leaderboard"> This is the leaderboard Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem, nulla deleniti iste temporibus ratione quas est maxime, fugit at accusantium commodi repudiandae expedita enim consequatur ipsam libero ullam vel sed architecto reprehenderit. Eaque hic delectus aspernatur quia quas ducimus iste, nisi nemo consequuntur magni id, ipsum maxime mollitia commodi totam pariatur sapiente sequi eius omnis amet corrupti numquam animi odit sit. Asperiores iste omnis vero alias culpa velit ipsa debitis, vel, architecto aut quas. Qui accusantium maxime inventore assumenda vitae alias nemo impedit in molestias. Eum, deleniti ipsum. Aut consequatur eos aspernatur id nemo veritatis, cupiditate quo magni consequuntur ut?</div>
 
     <!-- How to Play / Onboarding -->
     <div class="how" id="how">
@@ -145,7 +153,7 @@
           </button>
           <span id="handamt">Hand</span>
           <button class="button tooltip" id="plustenhand">
-            <i class="fas fa-plus"><span class="tooltiptext">+10 hand</span></i>
+            <i class="fas fa-plus"></i><span class="tooltiptext">+10 hand</span>
             <i class="fas fa-plus"></i>
           </button>
         </div>
@@ -163,8 +171,6 @@
         <i class="fas fa-chevron-down"></i>
         <i class="fas fa-heart"></i>
         
-
-
 </div>
     </div>
 
@@ -183,5 +189,24 @@
       <div class="border"></div>
       <div id="highscore"></div>
     </div>
+
+    <script>
+      const trophy= document.getElementById('trophy')
+      const toggleLeaderBoard = () =>{
+        if(trophy.classList.contains('active')){
+        document.getElementById('leaderboard').style.width = "0";
+        document.getElementById('body').style.marginRight="0";
+        document.getElementById('header').style.transform = "translateX(0%)";
+        trophy.classList.remove('active');
+      } else {
+        document.getElementById('leaderboard').style.width = "250px";
+        document.getElementById('body').style.marginRight="250px";
+        document.getElementById('header').style.transform = "translateX(-20%)";
+        trophy.classList.add('active');
+      };
+    }
+
+
+    </script>
   </body>
 </html>

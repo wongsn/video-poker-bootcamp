@@ -152,7 +152,7 @@ const handIterator = async (num) => {
   for (let i = 0; i < num; i += 1) {
     await new Promise((resolve) => {
       drawCards(cardsToBeSwapped, playerHand, i);
-      setTimeout(resolve, 1500);
+      setTimeout(resolve, 2000);
     });
     console.log(`iterated ${i + 1} times`);
   }
@@ -228,7 +228,6 @@ const changeHand = (scale) => {
       numberOfHands = 50;
     }
   }
-
   handamt.innerHTML = `${numberOfHands}`;
 };
 
@@ -273,12 +272,28 @@ const toggleSounds = (type) => {
     flick_aud.play();
   }
 
+  if (type == 'flip') {
+    const flip_aud = document.querySelector('#flip');
+    flip_aud.preload = 'auto';
+    flip_aud.load();
+    flip_aud.loop = false;
+    flip_aud.play();
+  }
+
   if (type == 'error') {
     const error_aud = document.querySelector('#error');
     error_aud.preload = 'auto';
     error_aud.load();
     error_aud.loop = false;
     error_aud.play();
+  }
+
+  if (type == 'hand') {
+    const hand_aud = document.querySelector('#hand');
+    hand_aud.preload = 'auto';
+    hand_aud.load();
+    hand_aud.loop = false;
+    hand_aud.play();
   }
 };
 
@@ -424,11 +439,11 @@ window.addEventListener('load', () => {
   betDown.addEventListener('click', () => { changeBet('down'); });
 
   handOne = document.getElementById('plusonehand');
-  handOne.addEventListener('click', () => { changeHand('ones'); });
+  handOne.addEventListener('click', () => { changeHand('ones'); toggleSounds('hand'); });
   handamt = document.getElementById('handamt');
   handamt.innerHTML = 1;
   handTen = document.getElementById('plustenhand');
-  handTen.addEventListener('click', () => { changeHand('tens'); });
+  handTen.addEventListener('click', () => { changeHand('tens'); toggleSounds('hand'); });
 
   deal = document.getElementById('deal');
   deal.addEventListener('click', initGame);
