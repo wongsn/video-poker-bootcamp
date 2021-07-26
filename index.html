@@ -4,21 +4,51 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title> Video Poker </title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="animation.css" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <!-- for the scrolling of numbers on the money pot -->
     <link rel="stylesheet" href="odometer.css" />
+        <script src="odometer.js"></script>
+
+    <!-- Font Awesome -->
     <script
       src="https://kit.fontawesome.com/9589b33f77.js"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Global Variables -->
     <script src="global.js"></script>
+    <!-- Game Initialisation -->
+    <!-- Hand Scoring -->
     <script src="testHands.js"></script>
+    <!-- Probability -->
     <script src="morecomfy.js" defer></script>
-    <script src="odometer.js"></script>
+
   </head>
   <body>
-    <audio src="night_theme_1.mp3" id="bgaudio"></audio>
+    <!-- Audio -->
+    <!-- 1. Background Music -->
+    <audio src="gameaudio/night_theme_1.mp3" id="bgaudio"></audio>
+    <!-- 2. Shuffle Cards -->
+    <audio src="gameaudio/shuffle2.mp3" id="shuffle"></audio>
+    <!-- 3. Deal Cards -->
+    <audio src="gameaudio/issue5cards.mp3" id="issue5"></audio>
+    <!-- 4. Draw Cards -->
+    <audio src="gameaudio/cardflick.mp3" id="flick"></audio>
+    <!-- 5. Overturn Cards -->
+    <audio src="gameaudio/flipcard.mp3" id="flip"></audio>
+    <!-- 6. Money in the pot -->
+    <audio src="gameaudio/insertpokertoken.mp3" id="token"></audio>
+    <!-- 7. Error -->
+    <audio src="gameaudio/error.mp3" id="error"></audio>
+    <!-- 8. Winning Hand -->
+    <audio src="gameaudio/winninghand.mp3" id="winninghand"></audio>
+    <!-- 9. Losing Hand -->
+    <audio src="gameaudio/losinghand.mp3" id="losinghand"></audio>
+
+    <!-- Splash Screen -->
     <div class="intro">
       <h1 class="intro-header">
         <span class="logo-header"> Game... </span>
@@ -30,23 +60,31 @@
       </h1>
     </div>
 
+    <!-- Navigation Bar -->
     <header>
       <a href="#home" class="logo"><i class="fas fa-dice-d20"></i></a>
       <ul>
         <li>
           <a href="#about" class="tooltip"
-            >About<span class="tooltiptext"
+            ><i class="fas fa-info-circle"></i><span class="tooltiptext"
               >This project is part of Rocket Academy's Bootcamp.</span
             ></a
           >
         </li>
-        <li><a href="#how">Gameplay</a></li>
+
         <li>
-          <a><i class="fas fa-volume-up" id="audiobtn"></i></a>
+          <a><i class="fas fa-volume-up tooltip" id="audiobtn"><span class="tooltiptext">Toggle audio</span></i></a>
         </li>
+        <li>
+          <a><i class="fas fa-trophy tooltip"><span class="tooltiptext">Leaderboard</span></i></a>
+        </li>
+        <li><a><i class="fas fa-table tooltip"><span class="tooltiptext"
+              >Scoring Chart</span
+            ></i></a></li>
       </ul>
     </header>
 
+    <!-- Hero Landing Page -->
     <section id="home">
       <img src="stars.png" alt="" id="stars" />
       <img src="moon.png" alt="" id="moon" />
@@ -58,6 +96,7 @@
       <a href="#how" class="btn" id="btn">How to play</a>
     </section>
 
+    <!-- How to Play / Onboarding -->
     <div class="how" id="how">
       <h2>Welcome <span id="player" style = "color: orange; text-decoration:underline;"></span></h2>
       <p><h3>Here's how to play:</h3></p>
@@ -73,9 +112,13 @@
       </p>
     </div>
 
+    <!-- Main Game Stage -->
     <div class="main" id="main">
+
+      <!-- playing field -->
       <div class="playingfield" id="playingfield"></div>
 
+      <!-- controls -->
       <div class="controls">
         <div id="bet">
           <button class="button tooltip" id="betup">
@@ -115,7 +158,17 @@
           >
         </button>
       </div>
+      <div class="mastercontrols">
+        <i class="fas fa-skull-crossbones"></i>
+        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-heart"></i>
+        
+
+
+</div>
     </div>
+
+    <!-- data -->
     <div class="datafield" id="datafield">
       <div class="pot">
         <i class="fas fa-coins"></i>
@@ -130,10 +183,5 @@
       <div class="border"></div>
       <div id="highscore"></div>
     </div>
-    <script>
-      
-    
-      
-    </script>
   </body>
 </html>

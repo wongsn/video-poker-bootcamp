@@ -81,7 +81,8 @@ const shuffleCards = (deck) => {
 // behaviours when cards are selected to return
 const playerSelectCard = (cardIndex) => {
   // eslint-disable-next-line prefer-const
-  let selectedSuit = document.getElementById(`${playerHand[cardIndex].rank}`);
+  toggleSounds('flip');
+  const selectedSuit = document.getElementById(`${playerHand[cardIndex].rank}`);
   const selectedCardContainer = document.getElementById(`c${playerHand[cardIndex].rank}`);
   selectedCardContainer.classList.toggle('is-flipped');
   if (selectedSuit.classList.contains('selected')) {
@@ -101,10 +102,13 @@ const drawCards = (array, hand, turn) => {
 
   if (array.length === 0) {
     const earnings = calcHandScore(hand);
+    if (earnings > 0) {
+      toggleSounds('winning');
+    } else {
+      toggleSounds('losing');
+    }
     pot += earnings;
-    setTimeout(() => {
-      showPot.innerHTML = pot;
-    }, 100);
+    showPot.innerHTML = pot;
     data.innerHTML = `Turn ${turn + 1}. ${scoreDescription(earnings)} <br> You've earned $${earnings}.`;
     endTurn();
   } else {
@@ -121,13 +125,19 @@ const drawCards = (array, hand, turn) => {
 
       const replacementCardObject = shuffledDeck.pop();
       const replacementCard = createCard(replacementCardObject, array[i]);
+      toggleSounds('flick');
       setTimeout(() => {
         replacementCard.classList.toggle('slide-in-blurred-top');
         replacementCard.classList.toggle('again');
-        selectedContainer.appendChild(replacementCard); }, 400);
+        selectedContainer.appendChild(replacementCard); }, 300);
       // eslint-disable-next-line prefer-const
       hand.splice(array[i], 1, replacementCardObject);
       const earnings = calcHandScore(hand);
+      if (earnings > 0) {
+        toggleSounds('winning');
+      } else {
+        toggleSounds('losing');
+      }
       pot += earnings;
 
       showPot.innerHTML = pot;
@@ -142,10 +152,11 @@ const handIterator = async (num) => {
   for (let i = 0; i < num; i += 1) {
     await new Promise((resolve) => {
       drawCards(cardsToBeSwapped, playerHand, i);
-      setTimeout(resolve, 2000);
+      setTimeout(resolve, 1500);
     });
     console.log(`iterated ${i + 1} times`);
   }
+  deal.disabled = false;
 };
 
 // takes the card object and the index within the hand
@@ -174,17 +185,20 @@ const createCard = (object, index) => {
 
 // main creation function to visually display the cards from hand
 
-const createCardsFromArray = (hand) => {
+const createCardsFromArray = async (hand) => {
   for (let j = 0; j < hand.length; j += 1) {
     const cardsContainer = document.createElement('div');
     cardsContainer.classList.add('cardsContainer', 'slide-in-blurred-top');
     cardsContainer.id = `cc${j}`;
     cardsContainer.appendChild(createCard(hand[j], j));
-    playingfield.appendChild(cardsContainer);
+    await new Promise((resolve) => {
+      playingfield.appendChild(cardsContainer);
+      setTimeout(resolve, 500); });
   }
 };
 
 const changeBet = (direction) => {
+  toggleSounds('token');
   if (direction == 'up') {
     if (bet < 5) {
       bet += 1;
@@ -218,8 +232,59 @@ const changeHand = (scale) => {
   handamt.innerHTML = `${numberOfHands}`;
 };
 
+const toggleSounds = (type) => {
+  if (type == 'issue') {
+    const issue_aud = document.querySelector('#issue5');
+    issue_aud.preload = 'auto';
+    issue_aud.load();
+    issue_aud.loop = false;
+    issue_aud.play();
+  }
+
+  if (type == 'token') {
+    const token_aud = document.querySelector('#token');
+    token_aud.preload = 'auto';
+    token_aud.load();
+    token_aud.loop = false;
+    token_aud.play();
+  }
+
+  if (type == 'winning') {
+    const winning_aud = document.querySelector('#winninghand');
+    winning_aud.preload = 'auto';
+    winning_aud.load();
+    winning_aud.loop = false;
+    winning_aud.play();
+  }
+
+  if (type == 'losing') {
+    const losing_aud = document.querySelector('#losinghand');
+    losing_aud.preload = 'auto';
+    losing_aud.load();
+    losing_aud.loop = false;
+    losing_aud.play();
+  }
+
+  if (type == 'flick') {
+    const flick_aud = document.querySelector('#flick');
+    flick_aud.preload = 'auto';
+    flick_aud.load();
+    flick_aud.loop = false;
+    flick_aud.play();
+  }
+
+  if (type == 'error') {
+    const error_aud = document.querySelector('#error');
+    error_aud.preload = 'auto';
+    error_aud.load();
+    error_aud.loop = false;
+    error_aud.play();
+  }
+};
+
 const initGame = () => {
   if (bet == 0) {
+    toggleSounds('error');
     data.innerHTML = 'Bet cannot be 0!';
   } else {
     // initialise game by generating a shuffled deck and dealing five cards to the player
@@ -249,6 +314,7 @@ const initGame = () => {
     deal.disabled = true;
 
     createCardsFromArray(playerHand);
+    toggleSounds('issue');
 
     data.innerHTML = 'Select cards to return, and press Draw!';
   }
@@ -261,7 +327,6 @@ const endTurn = () => {
   betDown.disabled = false;
   handOne.disabled = false;
   handTen.disabled = false;
-  deal.disabled = false;
   cardSuitTally = {};
   cardValueTally = {};
   if (pot > highest) {
@@ -289,20 +354,20 @@ window.addEventListener('load', () => {
     btn.style.marginTop = `${value * 1.5}px`;
   });
 
-  const toggleAudio = document.getElementById('audiobtn');
-  toggleAudio.addEventListener('click', () => {
+  const toggleBGAudio = document.getElementById('audiobtn');
+  toggleBGAudio.addEventListener('click', () => {
     const bgaudio = document.querySelector('#bgaudio');
     bgaudio.preload = 'auto';
     bgaudio.loop = true;
-    if (toggleAudio.classList.contains('fa-volume-up')) {
+    if (toggleBGAudio.classList.contains('fa-volume-up')) {
       // audio
       bgaudio.play();
-      toggleAudio.classList.remove('fa-volume-up');
-      toggleAudio.classList.add('fa-volume-mute');
+      toggleBGAudio.classList.remove('fa-volume-up');
+      toggleBGAudio.classList.add('fa-volume-mute');
     } else {
       bgaudio.pause();
-      toggleAudio.classList.remove('fa-volume-mute');
-      toggleAudio.classList.add('fa-volume-up');
+      toggleBGAudio.classList.remove('fa-volume-mute');
+      toggleBGAudio.classList.add('fa-volume-up');
     }
   });
 
@@ -344,7 +409,9 @@ window.addEventListener('load', () => {
     displayname.innerHTML = playername;
     setCookie('player', playername);
     setCookie('highscore', highest);
-    highscore.innerHTML = `${playername} <p>High-Score: ${highest}</p>`;
+    // if cookie exists, set highscore accordingly
+    // if not, set highest as 1000
+    highscore.innerHTML = `<i class="fas fa-user"></i> ${playername} <p>High-Score: ${highest}</p>`;
   });
 
   handconfig = document.getElementById('handconfig');

@@ -94,12 +94,12 @@ section img {
   pointer-events: none;
 }
 
-section img#moon {
-  mix-blend-mode: screen;
-}
-
 section img#mountains_front {
   z-index: 9;
+}
+
+section img#moon {
+  mix-blend-mode: screen;
 }
 
 .btn,
@@ -220,6 +220,7 @@ section img#mountains_front {
 .intro-header {
   background-color: transparent;
   position: absolute;
+  text-align: center;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -254,7 +255,8 @@ img {
   transform: translateX(1000);
 }
 
-.controls {
+.controls,
+.mastercontrols {
   box-sizing: border-box;
   margin: 0 auto;
   display: flex;
