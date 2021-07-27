@@ -39,81 +39,82 @@
   </head>
   <body id="body">
     <!-- Audio -->
-    <!-- 1. Background Music -->
-    <audio src="gameaudio/night_theme_1.mp3" id="bgaudio" display="none" playbackspeed="1.0"></audio>
-    <!-- 2. Shuffle Cards -->
-    <audio src="gameaudio/shuffle2.mp3" id="shuffle" display="none" playbackspeed="1.1"></audio>
-    <!-- 3. Deal Cards -->
-    <audio src="gameaudio/issue5cards.mp3" id="issue5" display="none" playbackspeed="1.1"></audio>
-    <!-- 4. Draw Cards -->
-    <audio src="gameaudio/cardflick.mp3" id="flick" display="none" playbackspeed="1.1"></audio>
-    <!-- 5. Overturn Cards -->
-    <audio src="gameaudio/flipcard.mp3" id="flip" display="none" playbackspeed="1.1"></audio>
-    <!-- 6. Money in the pot -->
-    <audio src="gameaudio/inserttoken2.mp3" id="token" display="none" playbackspeed="1.1"></audio>
-    <!-- 7. Error -->
-    <audio src="gameaudio/error.mp3" id="error" display="none" playbackspeed="1.1"></audio>
-    <!-- 8. Winning Hand -->
-    <audio src="gameaudio/winninghand.mp3" id="winninghand" display="none" playbackspeed="1.1"></audio>
-    <!-- 9. Losing Hand -->
-    <audio src="gameaudio/losinghand.mp3" id="losinghand" display="none" playbackspeed="1.1"></audio>
-    <!-- 10. Add hand -->
-    <audio src="gameaudio/inserthand.mp3" id="hand" display="none" playbackspeed="1.1"></audio>
+      <!-- 1. Background Music -->
+      <audio src="gameaudio/night_theme_1.mp3" id="bgaudio" display="none" playbackspeed="1.0"></audio>
+      <!-- 2. Shuffle Cards -->
+      <audio src="gameaudio/shuffle2.mp3" id="shuffle" display="none" playbackspeed="1.1"></audio>
+      <!-- 3. Deal Cards -->
+      <audio src="gameaudio/issue5cards.mp3" id="issue5" display="none" playbackspeed="1.1"></audio>
+      <!-- 4. Draw Cards -->
+      <audio src="gameaudio/cardflick.mp3" id="flick" display="none" playbackspeed="1.1"></audio>
+      <!-- 5. Overturn Cards -->
+      <audio src="gameaudio/flipcard.mp3" id="flip" display="none" playbackspeed="1.1"></audio>
+      <!-- 6. Money in the pot -->
+      <audio src="gameaudio/inserttoken2.mp3" id="token" display="none" playbackspeed="1.1"></audio>
+      <!-- 7. Error -->
+      <audio src="gameaudio/error.mp3" id="error" display="none" playbackspeed="1.1"></audio>
+      <!-- 8. Winning Hand -->
+      <audio src="gameaudio/winninghand.mp3" id="winninghand" display="none" playbackspeed="1.1"></audio>
+      <!-- 9. Losing Hand -->
+      <audio src="gameaudio/losinghand.mp3" id="losinghand" display="none" playbackspeed="1.1"></audio>
+      <!-- 10. Add hand -->
+      <audio src="gameaudio/inserthand.mp3" id="hand" display="none" playbackspeed="1.1"></audio>
 
-    <!-- Splash Screen -->
-    <div class="intro">
-      <h1 class="intro-header">
-        <span class="logo-header"> Game... </span>
-        <span class="logo-header" style="color: #59c996">Loaded! </span>
-        <p class="best">
-          Best viewed on desktop (<i class="fas fa-desktop"> </i>) or on
-          landscape mobile ( <i class="fas fa-mobile-alt"></i>)
-        </p>
-      </h1>
-    </div>
+  <!-- Splash Screen -->
+  <div class="intro">
+    <h1 class="intro-header">
+      <span class="logo-header"> Game... </span>
+      <span class="logo-header" style="color: #59c996">Loaded! </span>
+      <p class="best">
+        Best viewed on desktop (<i class="fas fa-desktop"> </i>) or on
+        landscape mobile ( <i class="fas fa-mobile-alt"></i>)
+      </p>
+    </h1>
+  </div>
 
-    <!-- Navigation Bar -->
-    <header id="header">
-      <a href="#home" class="logo"><i class="fas fa-dice-d20"></i></a>
-      <ul>
-        <li>
-          <a href="#about" class="tooltip"
-            ><i class="fas fa-info-circle"></i><span class="tooltiptext"
-              >This project is part of Rocket Academy's Bootcamp, done by Shen Nan.</span
-            ></a
-          >
-        </li>
-        <li>
-          <a><i class="fas fa-volume-mute tooltip" id="gameaudio"><span class="tooltiptext">Toggle <br>game sounds</span></i></a>
-        </li>
-        <li>
-          <a><i class="far fa-play-circle tooltip" id="audiobtn"><span class = "tooltiptext">Toggle <br>bg audio</span></i></a>
-        </li>
-        <li>
-          <a src="#" onclick="toggleLeaderBoard()" id="trophy"><i class="fas fa-trophy tooltip"><span class="tooltiptext">Leaderboard</span></i></a>
-        </li>
-        <li><a src="#" onclick="toggleScoreChart()" id="table"><i class="fas fa-table tooltip"><span class="tooltiptext"
-              >Scoring <br> Chart</span
-            ></i></a></li>
-      </ul>
-    </header>
+  <!-- Navigation Bar -->
+  <header id="header">
+    <a href="#home" class="logo"><i class="fas fa-dice-d20"></i></a>
+    <ul>
+      <li>
+        <a href="#about" class="tooltip"
+          ><i class="fas fa-info-circle"></i><span class="tooltiptext"
+            >This project is part of Rocket Academy's Bootcamp, done by Shen Nan.</span
+          ></a
+        >
+      </li>
+      <li>
+        <a><i class="fas fa-volume-mute tooltip" id="gameaudio"><span class="tooltiptext">Toggle <br>game sounds</span></i></a>
+      </li>
+      <li>
+        <a><i class="far fa-play-circle tooltip" id="audiobtn"><span class = "tooltiptext">Toggle <br>bg audio</span></i></a>
+      </li>
+      <li>
+        <a src="#" onclick="toggleLeaderBoard()" id="trophy"><i class="fas fa-trophy tooltip"><span class="tooltiptext">Leaderboard</span></i></a>
+      </li>
+      <li><a src="#" onclick="toggleScoreChart()" id="table"><i class="fas fa-table tooltip"><span class="tooltiptext"
+            >Scoring <br> Chart</span
+          ></i></a></li>
+    </ul>
+  </header>
 
-    <!-- Hero Landing Page -->
-    <section id="home">
-      <h2 id="title">Video<br />Poker</h2>
-      <img src="base.png" alt="" id="base" />
-      <input type="text" autofocus = "autofocus" class="input" placeholder="input your name" id="name" name="name" required
-       minlength="4" maxlength="10" size="20" style="text-align:center;"></input>
-      <a class="btn" id="btn" disabled><i class="fas fa-chevron-down"></i></a>
-      </form>
-      
-    </section>
+  <!-- Hero Landing Page -->
+  <section id="home">
+    <h2 id="title">Video<br />Poker</h2>
+    <img src="base.png" alt="" id="base" />
+    <input type="text" autofocus = "autofocus" class="input" placeholder="input your name" id="name" name="name" required
+      minlength="4" maxlength="10" size="20" style="text-align:center;"></input>
+    <a class="btn" id="btn" disabled><i class="fas fa-chevron-down"></i></a>
+    </form>
+    
+  </section>
 
-    <div class="leaderboard" id="leaderboard"> <div id="boardcontent"><table>
+  <!-- Leaderboard -->
+  <div class="leaderboard" id="leaderboard"> <div id="boardcontent"><table>
 <thead>
-  <tr>
-    <th colspan="3"><h2>LeaderBoard</h2></th>
-  </tr>
+<tr>
+  <th colspan="3"><h2>LeaderBoard</h2></th>
+</tr>
 </thead>
 <tbody>
   <tr>
@@ -171,186 +172,187 @@
     <td></td>
     <td></td>
   </tr>
-</tbody>
-</table></div></div>
+  </tbody>
+</table></div>
+</div>
 
-    <div class="scorechart" id="scorechart">  <div id="chartcontent"><table>
+  <!-- Scorechart -->
+  <div class="scorechart" id="scorechart">  <div id="chartcontent"><table>
 <thead>
-  <tr>
-    <th><h2>Hand</h2></th>
-  </tr>
+<tr>
+  <th><h2>Hand</h2></th>
+</tr>
 </thead>
 <tbody id="chartbody">
-  <tr>
-    <td id="royalflush"><span id="specialhands">🂪 🂫 🂭 🂮 🂡</span><br>Royal Flush | 250 x</td>
-  </tr>
-  <tr>
-    <td id="straightflush"><span id="specialhands">🃂 🃋 🃄 🃆 🃊</span><br>Straight Flush | 50 x</td>
-  </tr>
-  <tr>
-    <td id="fourofakind"><span id="specialhands">🂡 🂡 🂡 🂡 🃟</span><br>Four of a kind | 25 x</td>
-  </tr>
-  <tr>
-    <td id="fullhouse"><span id="specialhands">🃞 🂾 🂮 🃁 🃑</span><br>Full House | 9 x</td>
-  </tr>
-  <tr>
-    <td id="flush"><span id="specialhands">🂳 🂶 🂻 🂴 🂺</span><br>Flush | 6 x</td>
-  </tr>
-  <tr>
-    <td id="straight"><span id="specialhands">🂳 🃔 🃕 🃖 🃗</span><br>Straight | 4 x</td>
-  </tr>
-  <tr>
-    <td id="threeofakind"><span id="specialhands">🃇 🃗 🂷 🃟 🃟</span><br>Three of a Kind | 3 x</td>
-  </tr>
-  <tr>
-    <td id="twopairs"><span id="specialhands">🂶 🂦 🃟 🃇 🃗</span><br>Two Pairs | 2 x</td>
-  </tr>
-  <tr>
-    <td id="jacksorbetter"><span id="specialhands">🃟 🃋 🃛 🃟 🃟</span><br>Jacks or Better | 1 x</td>
-  </tr>
+<tr>
+  <td id="royalflush"><span id="specialhands">🂪 🂫 🂭 🂮 🂡</span><br>Royal Flush | 250 x</td>
+</tr>
+<tr>
+  <td id="straightflush"><span id="specialhands">🃂 🃋 🃄 🃆 🃊</span><br>Straight Flush | 50 x</td>
+</tr>
+<tr>
+  <td id="fourofakind"><span id="specialhands">🂡 🂡 🂡 🂡 🃟</span><br>Four of a kind | 25 x</td>
+</tr>
+<tr>
+  <td id="fullhouse"><span id="specialhands">🃞 🂾 🂮 🃁 🃑</span><br>Full House | 9 x</td>
+</tr>
+<tr>
+  <td id="flush"><span id="specialhands">🂳 🂶 🂻 🂴 🂺</span><br>Flush | 6 x</td>
+</tr>
+<tr>
+  <td id="straight"><span id="specialhands">🂳 🃔 🃕 🃖 🃗</span><br>Straight | 4 x</td>
+</tr>
+<tr>
+  <td id="threeofakind"><span id="specialhands">🃇 🃗 🂷 🃟 🃟</span><br>Three of a Kind | 3 x</td>
+</tr>
+<tr>
+  <td id="twopairs"><span id="specialhands">🂶 🂦 🃟 🃇 🃗</span><br>Two Pairs | 2 x</td>
+</tr>
+<tr>
+  <td id="jacksorbetter"><span id="specialhands">🃟 🃋 🃛 🃟 🃟</span><br>Jacks or Better | 1 x</td>
+</tr>
 </tbody>
 </table></div></div>
 
-    <!-- How to Play / Onboarding -->
-    <div class="how" id="how">
-      <h2>Welcome <span id="player" style = "color: #0e2219; text-decoration:underline;"></span></h2>
-      <p><h3 style="color:#0e2219">Here's how to play:</h3></p>
-      <br>
-      <div class="instructions">
-        <div class="instructions-text" id="instruct1">
-          
-          <div class="container">
-            <h4><b><i class="fas fa-money-bill-wave"></i> Make your bet.</b></h4>
-            <p style="color:black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum corporis impedit at assumenda provident architecto quasi laudantium eveniet magni, aliquam suscipit nostrum accusantium perspiciatis eius iste commodi? Laudantium nam suscipit neque. Nemo molestias eos repellat possimus repudiandae, culpa modi libero officiis illum dignissimos itaque, asperiores vitae repellendus laborum ipsa iusto.</p>
-          </div>
-          </div>
-        <div class="instructions-text" id="instruct2">
-          
-          <div class="container">
-            <h4><b><i class="fas fa-dice"></i> Make a move.</b></h4>
-            <p style="color:black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum corporis impedit at assumenda provident architecto quasi laudantium eveniet magni, aliquam suscipit nostrum accusantium perspiciatis eius iste commodi? Laudantium nam suscipit neque. Nemo molestias eos repellat possimus repudiandae, culpa modi libero officiis illum dignissimos itaque, asperiores vitae repellendus laborum ipsa iusto.</p>
-          </div></div>
-        <div class="instructions-text" id="instruct3">
-          <div class="container">
-            <h4><b><i class="fas fa-chess-rook"></i> Make a windfall.</b></h4>
-            <p style="color:black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum corporis impedit at assumenda provident architecto quasi laudantium eveniet magni, aliquam suscipit nostrum accusantium perspiciatis eius iste commodi? Laudantium nam suscipit neque. Nemo molestias eos repellat possimus repudiandae, culpa modi libero officiis illum dignissimos itaque, asperiores vitae repellendus laborum ipsa iusto.</p>
-          </div></div>
-      </div>
-
-      <p style="text-align: center;">
-        <a href="#main" class="btn" id="gameon"><i class="fas fa-gamepad"></i> GAME ON! </a>
-      </p>
-    </div>
-
-    <!-- Main Game Stage -->
-    <div class="main" id="main">
-
-      <!-- playing field -->
-      <div class="playingfield" id="playingfield"></div>
-
-      <!-- controls -->
-      <div class="controls">
-       <button class="button tooltip" id="gameover"><i class="fas fa-skull-crossbones"></i><span class="tooltiptext">Cash out!</span></button>
-
-          <a href="#how" ><button class = "button tooltip" id="mechanics"><i class="far fa-question-circle"></i><span class="tooltiptext">Game Mechanics</span></button></a>
-
-        <div id="bet">
-          
-          <button class="button tooltip" id="betup">
-            <i class="far fa-arrow-alt-circle-up"
-              ><span class="tooltiptext"
-                >Increase <br />
-                bet</span
-              ></i
-            >
-          </button>
-          <span id="betamt"> Bet </span>
-          <button class="button tooltip" id="betdown">
-            <i class="far fa-arrow-alt-circle-down"
-              ><span class="tooltiptext"
-                >Decrease <br />
-                bet</span
-              ></i
-            >
-          </button>
-        </div>
-        <div id="numhands">
-          <button class="button tooltip" id="plusonehand">
-            <i class="fas fa-plus"><span class="tooltiptext">+1 hand</span></i>
-          </button>
-          <span id="handamt">Hand</span>
-          <button class="button tooltip" id="plustenhand">
-            <i class="fas fa-plus"></i><span class="tooltiptext">+10 hand</span>
-            <i class="fas fa-plus"></i>
-          </button>
-        </div>
-        <button class="button tooltip" id="deal">
-          <i class="fas fa-donate"><span class="tooltiptext"> Deal!</span></i>
-        </button>
-        <button class="button tooltip" id="swap" disabled>
-          <i class="fas fa-angle-double-up"></i><span class="tooltiptext"> Swap cards <br />or stay!</span>
-        </button>
-      </div>
+  <!-- How to Play / Onboarding -->
+  <div class="how" id="how">
+    <h2>Welcome <span id="player" style = "color: #0e2219; text-decoration:underline;"></span></h2>
+    <p><h3 style="color:#0e2219">Here's how to play:</h3></p>
+    <br>
+    <div class="instructions">
+      <div class="instructions-text" id="instruct1">
         
+        <div class="container">
+          <h4><b><i class="fas fa-money-bill-wave"></i> Make your bet.</b></h4>
+          <p style="color:black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum corporis impedit at assumenda provident architecto quasi laudantium eveniet magni, aliquam suscipit nostrum accusantium perspiciatis eius iste commodi? Laudantium nam suscipit neque. Nemo molestias eos repellat possimus repudiandae, culpa modi libero officiis illum dignissimos itaque, asperiores vitae repellendus laborum ipsa iusto.</p>
+        </div>
+        </div>
+      <div class="instructions-text" id="instruct2">
+        
+        <div class="container">
+          <h4><b><i class="fas fa-dice"></i> Make a move.</b></h4>
+          <p style="color:black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum corporis impedit at assumenda provident architecto quasi laudantium eveniet magni, aliquam suscipit nostrum accusantium perspiciatis eius iste commodi? Laudantium nam suscipit neque. Nemo molestias eos repellat possimus repudiandae, culpa modi libero officiis illum dignissimos itaque, asperiores vitae repellendus laborum ipsa iusto.</p>
+        </div></div>
+      <div class="instructions-text" id="instruct3">
+        <div class="container">
+          <h4><b><i class="fas fa-chess-rook"></i> Make a windfall.</b></h4>
+          <p style="color:black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum corporis impedit at assumenda provident architecto quasi laudantium eveniet magni, aliquam suscipit nostrum accusantium perspiciatis eius iste commodi? Laudantium nam suscipit neque. Nemo molestias eos repellat possimus repudiandae, culpa modi libero officiis illum dignissimos itaque, asperiores vitae repellendus laborum ipsa iusto.</p>
+        </div></div>
+    </div>
+
+    <p style="text-align: center;">
+      <a href="#main" class="btn" id="gameon"><i class="fas fa-gamepad"></i> GAME ON! </a>
+    </p>
+  </div>
+
+  <!-- Main Game Stage -->
+  <div class="main" id="main">
+
+    <!-- playing field -->
+    <div class="playingfield" id="playingfield"></div>
+
+    <!-- controls -->
+    <div class="controls">
+      <button class="button tooltip" id="gameover"><i class="fas fa-skull-crossbones"></i><span class="tooltiptext">Cash out!</span></button>
+
+        <a href="#how" ><button class = "button tooltip" id="mechanics"><i class="far fa-question-circle"></i><span class="tooltiptext">Game Mechanics</span></button></a>
+
+      <div id="bet">
+        
+        <button class="button tooltip" id="betup">
+          <i class="far fa-arrow-alt-circle-up"
+            ><span class="tooltiptext"
+              >Increase <br />
+              bet</span
+            ></i
+          >
+        </button>
+        <span id="betamt"> Bet </span>
+        <button class="button tooltip" id="betdown">
+          <i class="far fa-arrow-alt-circle-down"
+            ><span class="tooltiptext"
+              >Decrease <br />
+              bet</span
+            ></i
+          >
+        </button>
+      </div>
+      <div id="numhands">
+        <button class="button tooltip" id="plusonehand">
+          <i class="fas fa-plus"><span class="tooltiptext">+1 hand</span></i>
+        </button>
+        <span id="handamt">Hand</span>
+        <button class="button tooltip" id="plustenhand">
+          <i class="fas fa-plus"></i><span class="tooltiptext">+10 hand</span>
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+      <button class="button tooltip" id="deal">
+        <i class="fas fa-donate"><span class="tooltiptext"> Deal!</span></i>
+      </button>
+      <button class="button tooltip" id="swap" disabled>
+        <i class="fas fa-angle-double-up"></i><span class="tooltiptext"> Swap cards <br />or stay!</span>
+      </button>
+    </div>
+      
 </div>
+  </div>
+
+  <!-- Data -->
+  <div class="datafield" id="datafield">
+    <div class="pot">
+      <i class="fas fa-coins"></i>
+      <div class="odometer" id="odometer">0</div>
     </div>
 
-    <!-- data -->
-    <div class="datafield" id="datafield">
-      <div class="pot">
-        <i class="fas fa-coins"></i>
-        <div class="odometer" id="odometer">0</div>
-      </div>
-
-      <div class="border"></div>
-      <div id="datamain">
-        <div id="data"></div>
-        <!-- <div id="handconfig"></div> -->
-      </div>
-      <div class="border"></div>
-      <div id="highscore"></div>
+    <div class="border"></div>
+    <div id="datamain">
+      <div id="data"></div>
+      <!-- <div id="handconfig"></div> -->
     </div>
+    <div class="border"></div>
+    <div id="highscore"></div>
+  </div>
 
-    <script>
-      const trophy= document.getElementById('trophy')
-      const toggleLeaderBoard = () =>{
-        if(table.classList.contains('active')){
-          toggleScoreChart();
-        }
+  <!-- Pushes Leaderboard and Scorechart in-and-out -->
+  <script>
+    const trophy= document.getElementById('trophy')
+    const toggleLeaderBoard = () =>{
+      if(table.classList.contains('active')){
+        toggleScoreChart();
+      }
 
-        if(trophy.classList.contains('active')){
-        document.getElementById('leaderboard').style.width = "0";
-        document.getElementById('body').style.marginRight="0";
-        document.getElementById('header').style.transform = "translateX(0%)";
-        trophy.classList.remove('active');
-      } else {
-        document.getElementById('leaderboard').style.width = "250px";
-        document.getElementById('body').style.marginRight= "250px";
-        document.getElementById('header').style.transform = "translateX(-20%)";
-        trophy.classList.add('active');
-      };
-    }
+      if(trophy.classList.contains('active')){
+      document.getElementById('leaderboard').style.width = "0";
+      document.getElementById('body').style.marginRight="0";
+      document.getElementById('header').style.transform = "translateX(0%)";
+      trophy.classList.remove('active');
+    } else {
+      document.getElementById('leaderboard').style.width = "250px";
+      document.getElementById('body').style.marginRight= "250px";
+      document.getElementById('header').style.transform = "translateX(-20%)";
+      trophy.classList.add('active');
+    };
+  }
 
-     const table = document.getElementById('table')
-      const toggleScoreChart = () => {
-        if(trophy.classList.contains('active')){
-          toggleLeaderBoard();
-        }
+    const table = document.getElementById('table')
+    const toggleScoreChart = () => {
+      if(trophy.classList.contains('active')){
+        toggleLeaderBoard();
+      }
 
-        if(table.classList.contains('active')){
-        document.getElementById('scorechart').style.width = "0";
-        document.getElementById('body').style.marginRight="0";
-        document.getElementById('header').style.transform = "translateX(0%)";
-        table.classList.remove('active');
-      } else {
-        document.getElementById('scorechart').style.width = "250px";
-        document.getElementById('body').style.marginRight="250px";
-        document.getElementById('header').style.transform = "translateX(-20%)";
-        table.classList.add('active');
-      };
-    }
-
-
-    </script>
+      if(table.classList.contains('active')){
+      document.getElementById('scorechart').style.width = "0";
+      document.getElementById('body').style.marginRight="0";
+      document.getElementById('header').style.transform = "translateX(0%)";
+      table.classList.remove('active');
+    } else {
+      document.getElementById('scorechart').style.width = "250px";
+      document.getElementById('body').style.marginRight="250px";
+      document.getElementById('header').style.transform = "translateX(-20%)";
+      table.classList.add('active');
+    };
+  }
+  </script>
   </body>
 </html>

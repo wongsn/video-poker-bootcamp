@@ -18,6 +18,67 @@ body {
   overflow-y: hidden;
 }
 
+img {
+  box-sizing: border-box;
+  width: var(--width);
+  height: var(--height);
+  transform: translateX(1000);
+}
+
+/* SPLASH SCREEN */
+.intro {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #161616;
+  transition: 1s;
+}
+
+.intro-header {
+  background-color: transparent;
+  position: absolute;
+  text-align: center;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #0e2219;
+}
+
+.logo-header {
+  background-color: transparent;
+  color: white;
+  position: relative;
+  display: inline-block;
+  bottom: -20px;
+  opacity: 0;
+}
+
+.logo-header.active {
+  bottom: 0;
+  opacity: 1;
+  transition: ease-in-out 0.5s;
+}
+
+.logo-header.fade {
+  bottom: 150px;
+  opacity: 0;
+  transition: ease-in-out 0.5s;
+}
+
+.best {
+  font-weight: 200;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.fa-mobile-alt {
+  transform: rotate(90deg);
+}
+
+/* NAV BAR */
 header {
   position: fixed;
   top: 0;
@@ -68,6 +129,7 @@ header ul li a.active {
   color: white;
 }
 
+/* HERO PAGE */
 section {
   position: relative;
   width: 100vw;
@@ -104,8 +166,14 @@ section img#base {
   z-index: 30;
 }
 
-section img#moon {
-  mix-blend-mode: screen;
+#title {
+  position: absolute;
+  color: white;
+  white-space: nowrap;
+  line-height: 5.3rem;
+  font-size: 6.5rem;
+  z-index: 45;
+  text-shadow: 5px 5px #0e2219 1;
 }
 
 .btn,
@@ -136,21 +204,66 @@ section img#moon {
   transform: translateY(9rem);
 }
 
-#title {
-  position: absolute;
-  color: white;
-  white-space: nowrap;
-  line-height: 5.3rem;
-  font-size: 6.5rem;
-  z-index: 45;
-  text-shadow: 5px 5px #0e2219 1;
+/* SCORECHART & LEADERBOARD */
+.scorechart,
+.leaderboard {
+  position: fixed;
+  height: 100%;
+  width: 0;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 20px;
+  z-index: 99;
+  box-shadow: inset 0 0 10px #000000;
 }
 
+tr:hover {
+  color: black !important;
+}
+
+#boardcontent,
+#chartcontent {
+  padding-left: 20px;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+#ranked {
+  font-size: 1rem;
+  line-height: 4rem;
+}
+
+#specialhands {
+  font-size: 2.8rem;
+}
+
+#body,
+#header {
+  transition: margin-right 0.5s;
+  padding: 20px;
+}
+
+/* INSTRUCTIONS PAGE */
 .how {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   width: 100vw;
+}
+
+.how h2 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.how h3 {
+  font-size: 1.2rem;
+  line-height: 1rem;
+  color: white;
 }
 
 .instructions {
@@ -182,6 +295,11 @@ section img#moon {
   padding: 2px 2px;
 }
 
+#gameon {
+  transform: translateY(3rem);
+}
+
+/* MAIN PLAYING AREA */
 .how,
 .main {
   position: relative;
@@ -191,169 +309,11 @@ section img#moon {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#gameon {
-  transform: translateY(3rem);
-}
-
 .main {
   width: 100vw;
   border-radius: 100% / 0 0 20% 20%;
   height: 90vh;
   z-index: 1;
-}
-
-.how h2 {
-  font-size: 3.5rem;
-  margin-bottom: 10px;
-  color: white;
-}
-
-.how h3 {
-  font-size: 1.2rem;
-  line-height: 1rem;
-  color: white;
-}
-
-.best {
-  font-weight: 200;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.2);
-}
-
-.fa-mobile-alt {
-  transform: rotate(90deg);
-}
-
-.intro {
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #161616;
-  transition: 1s;
-}
-
-.intro-header {
-  background-color: transparent;
-  position: absolute;
-  text-align: center;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #0e2219;
-}
-
-.logo-header {
-  background-color: transparent;
-  color: white;
-  position: relative;
-  display: inline-block;
-  bottom: -20px;
-  opacity: 0;
-}
-
-.logo-header.active {
-  bottom: 0;
-  opacity: 1;
-  transition: ease-in-out 0.5s;
-}
-
-.logo-header.fade {
-  bottom: 150px;
-  opacity: 0;
-  transition: ease-in-out 0.5s;
-}
-
-img {
-  box-sizing: border-box;
-  width: var(--width);
-  height: var(--height);
-  transform: translateX(1000);
-}
-
-.controls,
-.mastercontrols {
-  box-sizing: border-box;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  font-size: 2rem;
-  height: 10vh;
-  width: 50vw;
-  background-color: #74c69d;
-  color: #0e2219;
-}
-
-#bet,
-#numhands {
-  display: flex;
-  justify-content: space-around;
-  box-sizing: border-box;
-  width: 15vw;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0.2);
-  border-radius: 30px;
-}
-
-button {
-  position: relative;
-  text-align: center;
-  border: none;
-
-  background-color: transparent;
-  font-size: 2rem;
-  color: #0e2219;
-}
-
-button:hover {
-  color: white;
-  cursor: pointer;
-}
-
-button:active {
-  color: rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-}
-
-button:disabled {
-  opacity: 0.2;
-}
-
-button:disabled:hover {
-  color: rgba(255, 255, 255, 0.2);
-  opacity: 1;
-  cursor: auto;
-}
-
-.far,
-.fas {
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
-}
-
-.datafield {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  font-size: 1rem;
-  background: transparent;
-  height: 10vh;
-  color: white;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-#datamain {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-
-#pot {
-  min-width: 20%;
 }
 
 .playingfield {
@@ -372,6 +332,7 @@ button:disabled:hover {
   height: 60vh;
 }
 
+/* CARDS STYLING */
 .cardsContainer {
   background-color: transparent;
   font-size: var(--height);
@@ -442,7 +403,92 @@ button:disabled:hover {
   box-shadow: 1px 1px 10px 3px #0e2219;
 }
 
-/* Tooltip text */
+/* CONTROL PANEL */
+.controls,
+.mastercontrols {
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+  height: 10vh;
+  width: 50vw;
+  background-color: #74c69d;
+  color: #0e2219;
+}
+
+#bet,
+#numhands {
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  width: 15vw;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+}
+
+button {
+  position: relative;
+  text-align: center;
+  border: none;
+
+  background-color: transparent;
+  font-size: 2rem;
+  color: #0e2219;
+}
+
+button:hover {
+  color: white;
+  cursor: pointer;
+}
+
+button:active {
+  color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.2;
+}
+
+button:disabled:hover {
+  color: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  cursor: auto;
+}
+
+.far,
+.fas {
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* STATUS DESCRIPTION FIELD */
+.datafield {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1rem;
+  background: transparent;
+  height: 10vh;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#datamain {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+#pot {
+  min-width: 20%;
+}
+
+/* TOOLTIP */
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
@@ -488,46 +534,12 @@ button:disabled:hover {
   cursor: pointer;
 }
 
-.scorechart,
-.leaderboard {
-  position: fixed;
-  height: 100%;
-  width: 0;
-  top: 0;
-  right: 0;
-  background-color: white;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 20px;
-  z-index: 99;
-  box-shadow: inset 0 0 10px #000000;
-}
-
-tr:hover {
-  color: black !important;
-}
-
-#boardcontent,
-#chartcontent {
-  padding-left: 20px;
-  text-align: center;
-  font-size: 0.7rem;
-}
-
-#ranked {
-  font-size: 1rem;
-  line-height: 4rem;
-}
-
-#specialhands {
-  font-size: 2.8rem;
-}
-
-#body,
-#header {
-  transition: margin-right 0.5s;
-  padding: 20px;
-}
+/* MEDIA QUERIES */
+/* mobile - @media screen and (min-width: 20em) --> applies to 320px */
+/* tablets - @media screen and (min-width: 30em) --> applies to 481px */
+/* laptops - @media screen and (min-width: 48em) --> applies to 768px */
+/* desktops - @media screen and (min-width: 64em) --> applies to 1024px */
+/* TV - @media screen and (min-width: 80em) --> applies to 1280px */
 
 @media screen and (max-width: 900px) {
   #base,
