@@ -1,3 +1,9 @@
+/**
+ * @member
+ */
+
+/** @module gameinit */
+
 // init deck and playerhand as an empty array
 let deck = [];
 let preserveDeck = [];
@@ -17,8 +23,13 @@ let cardsToBeSwapped = [];
 // init inGame variables
 let highscore; let highest = pot; let playername;
 
-// generates deck of cards ordered by rank e.g. 2222 -> 3333 ... -> AAAA
-// each card is an object with {rank, display in unicode, name of the card, suit, card value in numbers, display name}
+/**
+ * Generates a deck.
+ * Generates deck of cards ordered by rank e.g. 2222 -> 3333 ... -> AAAA
+ * Each card is an object with {rank, display in unicode, name of the card, suit, card value in numbers, display name}
+ * @constructor
+ * @return {Array} The array of card objects
+ */
 const generateDeck = () => {
   const suits = ['♦', '♣', '♥', '♠'];
   const unicodeSuits = ['🃂', '🃒', '🂲', '🂢', '🃃', '🃓', '🂳', '🂣', '🃄', '🃔', '🂴', '🂤', '🃅', '🃕', '🂵', '🂥', '🃆', '🃖', '🂶', '🂦', '🃇', '🃗', '🂷', '🂧', '🃈', '🃘', '🂸', '🂨', '🃉', '🃙', '🂹', '🂩', '🃊', '🃚', '🂺', '🂪', '🃋', '🃛', '🂻', '🂫', '🃍', '🃝', '🂽', '🂭', '🃎', '🃞', '🂾', '🂮', '🃁', '🃑', '🂱', '🂡'];
@@ -38,7 +49,12 @@ const generateDeck = () => {
   }
 };
 
-// generate a random number based on an input of the ceiling of range
+/**
+ * Random Number Generator.
+ * @generator
+ * @param {number} max - The max range
+ * @return {number} A random number based on an input of the ceiling of range
+ */
 const getRandomIndex = (max) => Math.floor(Math.random() * max);
 
 // takes a deck and shuffles it
@@ -55,7 +71,15 @@ const shuffleCards = (deck) => {
   return deck;
 };
 
-// takes the card object and the index within the hand
+/**
+ * Create Card Object.
+ * Takes the card object and the index within the hand
+ * @method createCard
+ * @param {object} object - the card object from the hand array.
+ * @param {number} index - the index of the card object in the hand array.
+ * @returns {element} card - a div element to be appended subsequently.
+ */
+
 const createCard = (object, index) => {
   const suit = document.createElement('div');
   suit.classList.add('suit-front', object.color);
@@ -79,8 +103,15 @@ const createCard = (object, index) => {
   return card;
 };
 
-// main creation function to visually display the cards from hand
-// sets a Promise to complete sending one card down before the next one
+/**
+ * Main creation function to visually display the cards from hand
+ * sets a Promise to complete sending one card down before the next one
+ * @async
+ * @function createCardsFromArray
+ * @param {Array} hand - The given player hand
+ * @return {Promise<function>} Appending the individual card to the playing field
+ */
+
 const createCardsFromArray = async (hand) => {
   for (let j = 0; j < hand.length; j += 1) {
     const cardsContainer = document.createElement('div');

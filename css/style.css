@@ -530,9 +530,6 @@ tr:hover {
 }
 
 @media screen and (max-width: 900px) {
-  #stars,
-  #moon,
-  #mountains_behind,
   #base,
   section::before {
     visibility: hidden;
