@@ -13,7 +13,7 @@
 
 body {
   min-width: 100vh;
-  background: linear-gradient(#140230, #2b1055);
+  background: linear-gradient(#95ffca, #0e2219);
   overflow-x: hidden;
   overflow-y: hidden;
 }
@@ -28,15 +28,20 @@ header {
   justify-content: space-between;
   align-items: center;
   z-index: 50;
+  cursor: pointer;
 }
 
 header .logo {
-  color: white;
+  color: #0e2219;
   font-weight: 700;
   text-decoration: none;
   font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+.logo:hover {
+  color: white;
 }
 
 header ul {
@@ -53,22 +58,23 @@ header ul li {
 header ul li a {
   text-decoration: none;
   padding: 6px 15px;
-  color: white;
+  color: #0e2219;
   border-radius: 20px;
 }
 
 header ul li a:hover,
 header ul li a.active {
-  background: white;
-  color: #2b1055;
+  background: #0e2219;
+  color: white;
 }
 
 section {
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   padding: 100px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -80,7 +86,7 @@ section::before {
   bottom: 0;
   width: 100vw;
   height: 100px;
-  background: linear-gradient(to top, #1c0522, transparent);
+  background: linear-gradient(to top, #74c69d, transparent);
   z-index: 49;
 }
 
@@ -94,8 +100,8 @@ section img {
   pointer-events: none;
 }
 
-section img#mountains_front {
-  z-index: 9;
+section img#base {
+  z-index: 30;
 }
 
 section img#moon {
@@ -106,43 +112,28 @@ section img#moon {
 .input {
   cursor: pointer;
   text-decoration: none;
-  display: inline-block;
+  display: block;
   padding: 8px;
   border-radius: 40px;
-  background: white;
-  color: #2b1055;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background: #0e2219;
+  color: white;
   font-size: 1rem;
   font-weight: 200;
   z-index: 7;
-}
-
-.btn-float {
-  position: fixed;
-  z-index: 9;
-  bottom: 15px;
-  left: calc(100% - 75px);
-  width: 60px;
-  height: 60px;
-  padding: 22px 17px;
-  transition: all 0.5s ease-in-out;
-  visibility: visible;
-  background-color: #ef4b6c;
-  border-radius: 50%;
-  transform: translateZ(0);
+  transform: translateY(9rem);
 }
 
 .btn:hover {
-  background: #2b1055;
-  color: white;
+  background: white;
+  color: #0e2219;
 }
 
 .input {
   z-index: 46;
-}
-
-#btn,
-.input {
-  transform: translateY(7.5rem);
+  transform: translateY(9rem);
 }
 
 #title {
@@ -152,12 +143,14 @@ section img#moon {
   line-height: 5.3rem;
   font-size: 6.5rem;
   z-index: 45;
+  text-shadow: 5px 5px #0e2219 1;
 }
 
 .how {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  width: 100vw;
 }
 
 .instructions {
@@ -168,20 +161,45 @@ section img#moon {
   justify-content: space-around;
   align-items: center;
   margin: 2px;
+  margin-bottom: 0px;
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+
+.instructions-text {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.instructions-text:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+.instructions-text {
+  padding: 2px 2px;
 }
 
 .how,
 .main {
   position: relative;
   padding: 100px;
-  background: #1c0522;
-  height: 90vh;
+  background: #74c69d;
+  height: 100vh;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#gameon {
+  transform: translateY(3rem);
 }
 
 .main {
   width: 100vw;
   border-radius: 100% / 0 0 20% 20%;
+  height: 90vh;
+  z-index: 1;
 }
 
 .how h2 {
@@ -192,7 +210,7 @@ section img#moon {
 
 .how h3 {
   font-size: 1.2rem;
-  line-height: 0.8rem;
+  line-height: 1rem;
   color: white;
 }
 
@@ -224,7 +242,7 @@ section img#moon {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: #0e2219;
 }
 
 .logo-header {
@@ -266,8 +284,8 @@ img {
   font-size: 2rem;
   height: 10vh;
   width: 50vw;
-  background-color: #1c0522;
-  color: white;
+  background-color: #74c69d;
+  color: #0e2219;
 }
 
 #bet,
@@ -275,7 +293,7 @@ img {
   display: flex;
   justify-content: space-around;
   box-sizing: border-box;
-  width: 20vw;
+  width: 15vw;
   border-style: solid;
   border-color: rgba(255, 255, 255, 0.2);
   border-radius: 30px;
@@ -288,16 +306,16 @@ button {
 
   background-color: transparent;
   font-size: 2rem;
-  color: white;
+  color: #0e2219;
 }
 
 button:hover {
-  color: rgba(255, 255, 255, 0.2);
+  color: white;
   cursor: pointer;
 }
 
 button:active {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.2);
   cursor: pointer;
 }
 
@@ -339,9 +357,14 @@ button:disabled:hover {
 }
 
 .playingfield {
+  background-image: url("playingfield.png");
+  background-blend-mode: screen;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   display: block;
   box-sizing: border-box;
-  background-color: #1c0522;
+  background-color: #74c69d;
   border-color: rgba(0, 0, 0, 0.2);
   margin: 0 auto;
   justify-content: center;
@@ -416,7 +439,7 @@ button:disabled:hover {
 }
 
 .cards:hover {
-  box-shadow: 1px 1px 10px 3px rgb(212, 12, 212);
+  box-shadow: 1px 1px 10px 3px #0e2219;
 }
 
 /* Tooltip text */
@@ -434,6 +457,11 @@ button:disabled:hover {
   z-index: 1;
   margin-left: -70px;
   top: 80%;
+}
+
+.tooltip.active,
+.tooltiptext.active {
+  visibility: visible;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
@@ -460,6 +488,7 @@ button:disabled:hover {
   cursor: pointer;
 }
 
+.scorechart,
 .leaderboard {
   position: fixed;
   height: 100%;
@@ -469,7 +498,29 @@ button:disabled:hover {
   background-color: white;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 20px;
+  z-index: 99;
+  box-shadow: inset 0 0 10px #000000;
+}
+
+tr:hover {
+  color: black !important;
+}
+
+#boardcontent,
+#chartcontent {
+  padding-left: 20px;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+#ranked {
+  font-size: 1rem;
+  line-height: 4rem;
+}
+
+#specialhands {
+  font-size: 2.8rem;
 }
 
 #body,
@@ -482,9 +533,14 @@ button:disabled:hover {
   #stars,
   #moon,
   #mountains_behind,
-  #mountains_front,
+  #base,
   section::before {
     visibility: hidden;
+  }
+
+  .controls > * > *,
+  .mastercontrols {
+    font-size: 1.5rem;
   }
 
   /* #title,
@@ -512,9 +568,29 @@ button:disabled:hover {
     font-size: 0.7rem;
     width: 100vw;
   }
+
+  .instructions {
+    font-size: 0.7rem;
+    flex-direction: column;
+  }
+
+  .how h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .how h3 {
+    font-size: 1rem;
+    line-height: 0.6rem;
+  }
 }
 
 @media screen and (max-width: 460px) {
+  #title {
+    line-height: 4.5rem;
+    font-size: 5.5rem;
+  }
+
   header ul {
     flex-direction: column;
   }
@@ -525,7 +601,14 @@ button:disabled:hover {
     visibility: hidden;
   }
 
-  #playingfield {
+  .controls > * > *,
+  .mastercontrols {
+    font-size: 1rem;
+    transform: rotate(90deg);
+    line-height: 1rem;
+  }
+
+  .playingfield {
     transform: rotate(90deg);
     margin-left: -130px;
     margin-top: -40px;
@@ -538,5 +621,15 @@ button:disabled:hover {
   }
   .datafield {
     font-size: 0.6rem;
+  }
+
+  .container > p {
+    visibility: hidden;
+    font-size: 0;
+  }
+
+  #trophy,
+  #table {
+    visibility: hidden;
   }
 }

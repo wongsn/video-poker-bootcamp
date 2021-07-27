@@ -1,17 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title> Video Poker </title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="animation.css" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
     <!-- for the scrolling of numbers on the money pot -->
-    <link rel="stylesheet" href="odometer.css" />
-        <script src="odometer.js"></script>
+    <link rel="stylesheet" href="css/odometer.css" />
+        <script src="js/odometer.js"></script>
 
     <!-- Font Awesome -->
     <script
@@ -19,43 +21,50 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Global Variables -->
-    <script src="global.js"></script>
     <!-- Game Initialisation -->
+    <script src="js/gameInit.js"></script>
+
+    <!-- Global Variables -->
+    <script src="js/global.js"></script>
+
     <!-- Hand Scoring -->
-    <script src="testHands.js"></script>
+    <script src="js/score.js"></script>
+
     <!-- Probability -->
-    <script src="morecomfy.js" defer></script>
+    <script src="js/morecomfy.js" defer></script>
+
+    <!-- Testing -->
+    <script src="js/testHandScore.js" defer></script>
 
   </head>
   <body id="body">
     <!-- Audio -->
     <!-- 1. Background Music -->
-    <audio src="gameaudio/night_theme_1.mp3" id="bgaudio"></audio>
+    <audio src="gameaudio/night_theme_1.mp3" id="bgaudio" display="none" playbackspeed="1.0"></audio>
     <!-- 2. Shuffle Cards -->
-    <audio src="gameaudio/shuffle2.mp3" id="shuffle"></audio>
+    <audio src="gameaudio/shuffle2.mp3" id="shuffle" display="none" playbackspeed="1.1"></audio>
     <!-- 3. Deal Cards -->
-    <audio src="gameaudio/issue5cards.mp3" id="issue5"></audio>
+    <audio src="gameaudio/issue5cards.mp3" id="issue5" display="none" playbackspeed="1.1"></audio>
     <!-- 4. Draw Cards -->
-    <audio src="gameaudio/cardflick.mp3" id="flick"></audio>
+    <audio src="gameaudio/cardflick.mp3" id="flick" display="none" playbackspeed="1.1"></audio>
     <!-- 5. Overturn Cards -->
-    <audio src="gameaudio/flipcard.mp3" id="flip"></audio>
+    <audio src="gameaudio/flipcard.mp3" id="flip" display="none" playbackspeed="1.1"></audio>
     <!-- 6. Money in the pot -->
-    <audio src="gameaudio/inserttoken2.mp3" id="token"></audio>
+    <audio src="gameaudio/inserttoken2.mp3" id="token" display="none" playbackspeed="1.1"></audio>
     <!-- 7. Error -->
-    <audio src="gameaudio/error.mp3" id="error"></audio>
+    <audio src="gameaudio/error.mp3" id="error" display="none" playbackspeed="1.1"></audio>
     <!-- 8. Winning Hand -->
-    <audio src="gameaudio/winninghand.mp3" id="winninghand"></audio>
+    <audio src="gameaudio/winninghand.mp3" id="winninghand" display="none" playbackspeed="1.1"></audio>
     <!-- 9. Losing Hand -->
-    <audio src="gameaudio/losinghand.mp3" id="losinghand"></audio>
-        <!-- 10. Add hand -->
-    <audio src="gameaudio/inserthand.mp3" id="hand"></audio>
+    <audio src="gameaudio/losinghand.mp3" id="losinghand" display="none" playbackspeed="1.1"></audio>
+    <!-- 10. Add hand -->
+    <audio src="gameaudio/inserthand.mp3" id="hand" display="none" playbackspeed="1.1"></audio>
 
     <!-- Splash Screen -->
     <div class="intro">
       <h1 class="intro-header">
         <span class="logo-header"> Game... </span>
-        <span class="logo-header" style="color: blueviolet">Loaded! </span>
+        <span class="logo-header" style="color: #59c996">Loaded! </span>
         <p class="best">
           Best viewed on desktop (<i class="fas fa-desktop"> </i>) or on
           landscape mobile ( <i class="fas fa-mobile-alt"></i>)
@@ -74,49 +83,162 @@
             ></a
           >
         </li>
-
         <li>
-          <a><i class="fas fa-volume-up tooltip" id="audiobtn"><span class="tooltiptext">Toggle background audio</span></i></a>
+          <a><i class="fas fa-volume-mute tooltip" id="gameaudio"><span class="tooltiptext">Toggle <br>game sounds</span></i></a>
         </li>
         <li>
-          <a><i class="far fa-stop-circle tooltip" id="gameaudio"><span class = "tooltiptext">Toggle game sounds</span></i></a>
+          <a><i class="far fa-play-circle tooltip" id="audiobtn"><span class = "tooltiptext">Toggle <br>bg audio</span></i></a>
         </li>
         <li>
           <a src="#" onclick="toggleLeaderBoard()" id="trophy"><i class="fas fa-trophy tooltip"><span class="tooltiptext">Leaderboard</span></i></a>
         </li>
-        <li><a><i class="fas fa-table tooltip"><span class="tooltiptext"
-              >Scoring Chart</span
+        <li><a src="#" onclick="toggleScoreChart()" id="table"><i class="fas fa-table tooltip"><span class="tooltiptext"
+              >Scoring <br> Chart</span
             ></i></a></li>
       </ul>
     </header>
 
     <!-- Hero Landing Page -->
     <section id="home">
-      <img src="stars.png" alt="" id="stars" />
-      <img src="moon.png" alt="" id="moon" />
-      <img src="mountains_behind.png" alt="" id="mountains_behind" />
       <h2 id="title">Video<br />Poker</h2>
-      <img src="mountains_front.png" alt="" id="mountains_front" />
-      <input type="text" class="input" placeholder="input your name" id="name" name="name" required
-       minlength="4" maxlength="10" size="20"></input>
-      <a href="#how" class="btn" id="btn">How to play</a>
+      <img src="base.png" alt="" id="base" />
+      <input type="text" autofocus = "autofocus" class="input" placeholder="input your name" id="name" name="name" required
+       minlength="4" maxlength="10" size="20" style="text-align:center;"></input>
+      <a class="btn" id="btn" disabled><i class="fas fa-chevron-down"></i></a>
+      </form>
+      
     </section>
 
-    <div class="leaderboard" id="leaderboard"> This is the leaderboard Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem, nulla deleniti iste temporibus ratione quas est maxime, fugit at accusantium commodi repudiandae expedita enim consequatur ipsam libero ullam vel sed architecto reprehenderit. Eaque hic delectus aspernatur quia quas ducimus iste, nisi nemo consequuntur magni id, ipsum maxime mollitia commodi totam pariatur sapiente sequi eius omnis amet corrupti numquam animi odit sit. Asperiores iste omnis vero alias culpa velit ipsa debitis, vel, architecto aut quas. Qui accusantium maxime inventore assumenda vitae alias nemo impedit in molestias. Eum, deleniti ipsum. Aut consequatur eos aspernatur id nemo veritatis, cupiditate quo magni consequuntur ut?</div>
+    <div class="leaderboard" id="leaderboard"> <div id="boardcontent"><table>
+<thead>
+  <tr>
+    <th colspan="3"><h2>LeaderBoard</h2></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Rank</td>
+    <td>Player</td>
+    <td>Score</td>
+  </tr>
+  <tr id="ranked">
+    <td>1</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr id="ranked">
+    <td>2</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr id="ranked">
+    <td>3</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr id="ranked">
+    <td>4</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr id="ranked">
+    <td>5</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr id="ranked">
+    <td>6</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr id="ranked">
+    <td>7</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr id="ranked">
+    <td>8</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr id="ranked">
+    <td>9</td>
+    <td>adas</td>
+    <td></td>
+  </tr>
+  <tr id="ranked">
+    <td>10</td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+</table></div></div>
+
+    <div class="scorechart" id="scorechart">  <div id="chartcontent"><table>
+<thead>
+  <tr>
+    <th><h2>Hand</h2></th>
+  </tr>
+</thead>
+<tbody id="chartbody">
+  <tr>
+    <td id="royalflush"><span id="specialhands">🂪 🂫 🂭 🂮 🂡</span><br>Royal Flush | 250 x</td>
+  </tr>
+  <tr>
+    <td id="straightflush"><span id="specialhands">🃂 🃋 🃄 🃆 🃊</span><br>Straight Flush | 50 x</td>
+  </tr>
+  <tr>
+    <td id="fourofakind"><span id="specialhands">🂡 🂡 🂡 🂡 🃟</span><br>Four of a kind | 25 x</td>
+  </tr>
+  <tr>
+    <td id="fullhouse"><span id="specialhands">🃞 🂾 🂮 🃁 🃑</span><br>Full House | 9 x</td>
+  </tr>
+  <tr>
+    <td id="flush"><span id="specialhands">🂳 🂶 🂻 🂴 🂺</span><br>Flush | 6 x</td>
+  </tr>
+  <tr>
+    <td id="straight"><span id="specialhands">🂳 🃔 🃕 🃖 🃗</span><br>Straight | 4 x</td>
+  </tr>
+  <tr>
+    <td id="threeofakind"><span id="specialhands">🃇 🃗 🂷 🃟 🃟</span><br>Three of a Kind | 3 x</td>
+  </tr>
+  <tr>
+    <td id="twopairs"><span id="specialhands">🂶 🂦 🃟 🃇 🃗</span><br>Two Pairs | 2 x</td>
+  </tr>
+  <tr>
+    <td id="jacksorbetter"><span id="specialhands">🃟 🃋 🃛 🃟 🃟</span><br>Jacks or Better | 1 x</td>
+  </tr>
+</tbody>
+</table></div></div>
 
     <!-- How to Play / Onboarding -->
     <div class="how" id="how">
-      <h2>Welcome <span id="player" style = "color: orange; text-decoration:underline;"></span></h2>
-      <p><h3>Here's how to play:</h3></p>
+      <h2>Welcome <span id="player" style = "color: #0e2219; text-decoration:underline;"></span></h2>
+      <p><h3 style="color:#0e2219">Here's how to play:</h3></p>
       <br>
       <div class="instructions">
-        <div id="instruct1">This is instruction 1</div>
-        <div id="instruct2">This is instruction 2</div>
-        <div id="instruct3">This is instruction 3</div>
+        <div class="instructions-text" id="instruct1">
+          
+          <div class="container">
+            <h4><b><i class="fas fa-money-bill-wave"></i> Make your bet.</b></h4>
+            <p style="color:black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum corporis impedit at assumenda provident architecto quasi laudantium eveniet magni, aliquam suscipit nostrum accusantium perspiciatis eius iste commodi? Laudantium nam suscipit neque. Nemo molestias eos repellat possimus repudiandae, culpa modi libero officiis illum dignissimos itaque, asperiores vitae repellendus laborum ipsa iusto.</p>
+          </div>
+          </div>
+        <div class="instructions-text" id="instruct2">
+          
+          <div class="container">
+            <h4><b><i class="fas fa-dice"></i> Make a move.</b></h4>
+            <p style="color:black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum corporis impedit at assumenda provident architecto quasi laudantium eveniet magni, aliquam suscipit nostrum accusantium perspiciatis eius iste commodi? Laudantium nam suscipit neque. Nemo molestias eos repellat possimus repudiandae, culpa modi libero officiis illum dignissimos itaque, asperiores vitae repellendus laborum ipsa iusto.</p>
+          </div></div>
+        <div class="instructions-text" id="instruct3">
+          <div class="container">
+            <h4><b><i class="fas fa-chess-rook"></i> Make a windfall.</b></h4>
+            <p style="color:black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum corporis impedit at assumenda provident architecto quasi laudantium eveniet magni, aliquam suscipit nostrum accusantium perspiciatis eius iste commodi? Laudantium nam suscipit neque. Nemo molestias eos repellat possimus repudiandae, culpa modi libero officiis illum dignissimos itaque, asperiores vitae repellendus laborum ipsa iusto.</p>
+          </div></div>
       </div>
 
-      <p style="text-align: center">
-        <a href="#main" class="btn"><i class="fas fa-gamepad"></i> </a>
+      <p style="text-align: center;">
+        <a href="#main" class="btn" id="gameon"><i class="fas fa-gamepad"></i> GAME ON! </a>
       </p>
     </div>
 
@@ -128,7 +250,12 @@
 
       <!-- controls -->
       <div class="controls">
+       <button class="button tooltip" id="gameover"><i class="fas fa-skull-crossbones"></i><span class="tooltiptext">Cash out!</span></button>
+
+          <a href="#how" ><button class = "button tooltip" id="mechanics"><i class="far fa-question-circle"></i><span class="tooltiptext">Game Mechanics</span></button></a>
+
         <div id="bet">
+          
           <button class="button tooltip" id="betup">
             <i class="far fa-arrow-alt-circle-up"
               ><span class="tooltiptext"
@@ -161,15 +288,9 @@
           <i class="fas fa-donate"><span class="tooltiptext"> Deal!</span></i>
         </button>
         <button class="button tooltip" id="swap" disabled>
-          <i class="fas fa-exchange-alt"
-            ><span class="tooltiptext"> Swap cards <br />or stay!</span></i
-          >
+          <i class="fas fa-angle-double-up"></i><span class="tooltiptext"> Swap cards <br />or stay!</span>
         </button>
       </div>
-      <div class="mastercontrols">
-        <i class="fas fa-skull-crossbones"></i>
-        <i class="fas fa-chevron-down"></i>
-        <i class="fas fa-heart"></i>
         
 </div>
     </div>
@@ -184,7 +305,7 @@
       <div class="border"></div>
       <div id="datamain">
         <div id="data"></div>
-        <div id="handconfig"></div>
+        <!-- <div id="handconfig"></div> -->
       </div>
       <div class="border"></div>
       <div id="highscore"></div>
@@ -193,6 +314,10 @@
     <script>
       const trophy= document.getElementById('trophy')
       const toggleLeaderBoard = () =>{
+        if(table.classList.contains('active')){
+          toggleScoreChart();
+        }
+
         if(trophy.classList.contains('active')){
         document.getElementById('leaderboard').style.width = "0";
         document.getElementById('body').style.marginRight="0";
@@ -200,9 +325,28 @@
         trophy.classList.remove('active');
       } else {
         document.getElementById('leaderboard').style.width = "250px";
-        document.getElementById('body').style.marginRight="250px";
+        document.getElementById('body').style.marginRight= "250px";
         document.getElementById('header').style.transform = "translateX(-20%)";
         trophy.classList.add('active');
+      };
+    }
+
+     const table = document.getElementById('table')
+      const toggleScoreChart = () => {
+        if(trophy.classList.contains('active')){
+          toggleLeaderBoard();
+        }
+
+        if(table.classList.contains('active')){
+        document.getElementById('scorechart').style.width = "0";
+        document.getElementById('body').style.marginRight="0";
+        document.getElementById('header').style.transform = "translateX(0%)";
+        table.classList.remove('active');
+      } else {
+        document.getElementById('scorechart').style.width = "250px";
+        document.getElementById('body').style.marginRight="250px";
+        document.getElementById('header').style.transform = "translateX(-20%)";
+        table.classList.add('active');
       };
     }
 

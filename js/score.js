@@ -1,51 +1,25 @@
 // let cardSuitTally = {};
 // let cardValueTally = {};
 
-const testtest = [
-  {
-    color: 'red',
-    display: '🃃',
-    name: '2 of ♦',
-    property: '2',
-    rank: 1,
-    suit: '♦',
-    value: 2,
-  }, {
-    color: 'red',
-    display: '🃃',
-    name: '3 of ♦',
-    property: '3',
-    rank: 5,
-    suit: '♦',
-    value: 3,
-  }, {
-    color: 'red',
-    display: '🃃',
-    name: '4 of ♦',
-    property: '4',
-    rank: 9,
-    suit: '♦',
-    value: 4,
-  }, {
-    color: 'red',
-    display: '🃃',
-    name: '5 of ♦',
-    property: '5',
-    rank: 13,
-    suit: '♦',
-    value: 5,
-  }, {
-    color: 'red',
-    display: '🃃',
-    name: '6 of ♦',
-    property: '6',
-    rank: 17,
-    suit: '♦',
-    value: 6,
-  },
-];
+let highlighthand;
+
+// change scorechart to reflect current winning hand by highlighting the respective winning combination
+const toggleChart = (hand = '') => {
+  const chartbody = document.querySelector('#chartbody');
+  chartbody.style.color = 'rgba(0,0,0,0.1)';
+  try {
+    highlighthand.style.color = 'rgba(0,0,0,0.1)';
+  } catch (error) {
+    // do nothing
+  }
+  if (hand !== '') {
+    highlighthand = document.querySelector(`#${hand}`);
+    highlighthand.style.color = 'black';
+  }
+};
 
 // https://www.gamblingsites.org/casino/video-poker/pay-tables/
+// earnings multiplier
 const multiplier = {
   royalFlush: 250,
   straightFlush: 50,
@@ -131,7 +105,7 @@ const tallyHandSuit = (hand, tally) => {
 
 // checks a sorted hand to see if the values are consecutive
 const checkConsecutiveValue = (hand) => {
-  for (let i = 0; i <= hand.length - 2; i += 1) {
+  for (let i = 0; i < hand.length - 1; i += 1) {
     if (hand[i + 1].value - hand[i].value == 1) {
       checkConsecutiveValue(hand.slice(i + 1, hand.length));
     } else {
@@ -164,39 +138,50 @@ const calcHandScore = (hand) => {
 
   if (checkConsecutiveValue(sortedHand)) {
     if (checkFlush(cardSuitTally)) {
-      if (sortedHand[sortedHand.length - 1].value == 13) {
+      if (sortedHand[sortedHand.length - 1].value == 14) {
         if (bet == 5) {
+          toggleChart('royalflush');
           return 4000;
         }
+        toggleChart('royalflush');
         return bet * multiplier.royalFlush;
       }
+      toggleChart('straightflush');
       return bet * multiplier.straightFlush;
     }
+    toggleChart('straight');
     return bet * multiplier.straight;
   }
 
   // if not consecutive but same suits, flush
   if (checkFlush(cardSuitTally)) {
+    toggleChart('flush');
     return bet * multiplier.flush;
   }
 
   // check for similar values
   const noOFsameValues = Object.values(cardValueTally);
   if (noOFsameValues.includes(4)) {
+    toggleChart('fourofakind');
     return bet * multiplier.fourOfAKind;
   } if (noOFsameValues.includes(3) && noOFsameValues.includes(2)) {
+    toggleChart('fullhouse');
     return bet * multiplier.fullHouse;
   } if (noOFsameValues.includes(3)) {
+    toggleChart('threeofakind');
     return bet * multiplier.threeOfAKind;
   } if (noOFsameValues.includes(2)) {
     const arrayofpairs = noOFsameValues.filter((pairs) => pairs == 2);
     if (arrayofpairs.length == 2) {
+      toggleChart('twopairs');
       return bet * multiplier.twoPairs;
     }
     const pairsValue = Object.keys(cardValueTally).find((key) => cardValueTally[key] === 2);
     if (pairsValue >= 11) {
+      toggleChart('jacksorbetter');
       return bet * multiplier.jacksOrBetter;
     }
   }
+  toggleChart('');
   return 0;
 };
