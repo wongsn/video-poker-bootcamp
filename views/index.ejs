@@ -1,0 +1,130 @@
+<%- include('template') -%>
+  <body id="body">
+    <%- include('audio') -%>
+    <%- include('splash') -%>
+    <%- include('nav') -%>
+    <%- include('leaderboard') -%>
+    <%- include('hero') -%>
+    <%- include('scorechart') -%>
+    <%- include('instructions') -%>
+
+  <!-- Main Game Stage -->
+  <div class="main" id="main">
+
+    <!-- playing field -->
+    <div class="playingfield" id="playingfield"></div>
+
+    <!-- controls -->
+    <div class="controls">
+      <button class="button tooltip" id="gameover">
+        <i class="fas fa-skull-crossbones"></i>
+        <span class="tooltiptext">Cash out!</span>
+      </button>
+
+        <a href="#how">
+          <button class = "button tooltip" id="mechanics">
+            <i class="far fa-question-circle"></i>
+            <span class="tooltiptext">Game Mechanics</span>
+          </button>
+        </a>
+
+      <div id="bet">
+        <button class="button tooltip" id="betup">
+          <i class="far fa-arrow-alt-circle-up">
+            <span class="tooltiptext">Increase <br />bet</span>
+            </i>
+        </button>
+
+        <span id="betamt"> Bet </span>
+
+        <button class="button tooltip" id="betdown">
+          <i class="far fa-arrow-alt-circle-down">
+            <span class="tooltiptext">Decrease <br />bet</span>
+            </i>
+        </button>
+      </div>
+
+      <div id="numhands">
+        <button class="button tooltip" id="plusonehand">
+          <i class="fas fa-plus">
+            <span class="tooltiptext">+1 hand</span>
+          </i>
+        </button>
+        <span id="handamt">Hand</span>
+        <button class="button tooltip" id="plustenhand">
+          <i class="fas fa-plus"></i>
+          <span class="tooltiptext">+10 hand</span>
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+      <button class="button tooltip" id="deal">
+        <i class="fas fa-donate">
+          <span class="tooltiptext"> Deal!</span>
+        </i>
+      </button>
+      <button class="button tooltip" id="swap" disabled>
+        <i class="fas fa-angle-double-up"></i>
+        <span class="tooltiptext"> Swap cards <br />or stay!</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+  <!-- Data -->
+  <div class="datafield" id="datafield">
+    <div class="pot">
+      <i class="fas fa-coins"></i>
+      <div class="odometer" id="odometer">0</div>
+    </div>
+
+    <div class="border"></div>
+    <div id="datamain">
+      <div id="data"></div>
+      <!-- <div id="handconfig"></div> -->
+    </div>
+    <div class="border"></div>
+    <div id="highscore"></div>
+  </div>
+
+  <!-- Pushes Leaderboard and Scorechart in-and-out -->
+  <script>
+    const trophy= document.getElementById('trophy')
+    const toggleLeaderBoard = () =>{
+      if(table.classList.contains('active')){
+        toggleScoreChart();
+      }
+
+      if(trophy.classList.contains('active')){
+      document.getElementById('leaderboard').style.width = "0";
+      document.getElementById('body').style.marginRight="0";
+      document.getElementById('header').style.transform = "translateX(0%)";
+      trophy.classList.remove('active');
+    } else {
+      document.getElementById('leaderboard').style.width = "250px";
+      document.getElementById('body').style.marginRight= "250px";
+      document.getElementById('header').style.transform = "translateX(-20%)";
+      trophy.classList.add('active');
+    };
+  }
+
+    const table = document.getElementById('table')
+    const toggleScoreChart = () => {
+      if(trophy.classList.contains('active')){
+        toggleLeaderBoard();
+      }
+
+      if(table.classList.contains('active')){
+      document.getElementById('scorechart').style.width = "0";
+      document.getElementById('body').style.marginRight="0";
+      document.getElementById('header').style.transform = "translateX(0%)";
+      table.classList.remove('active');
+    } else {
+      document.getElementById('scorechart').style.width = "250px";
+      document.getElementById('body').style.marginRight="250px";
+      document.getElementById('header').style.transform = "translateX(-20%)";
+      table.classList.add('active');
+    };
+  }
+  </script>
+  </body>
+</html>
